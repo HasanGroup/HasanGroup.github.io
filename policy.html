@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Hasan Group</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* --- CORE STYLES (Dark Theme) --- */
+        :root {
+            --bg: #0b0c10; --surface: #15161c; --primary: #4cc9f0; 
+            --accent: #4361ee; --text: #ffffff; --text-gray: #94a3b8; 
+            --border: rgba(255, 255, 255, 0.08);
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; margin: 0; line-height: 1.8; }
+
+        /* --- LAYOUT --- */
+        .page-wrapper {
+            max-width: 1200px; margin: 0 auto; padding: 40px 20px;
+            display: grid; grid-template-columns: 280px 1fr; gap: 60px;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar { position: sticky; top: 40px; height: fit-content; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 10px; color: var(--text-gray); 
+            text-decoration: none; font-weight: 700; margin-bottom: 30px; transition: 0.3s;
+        }
+        .back-btn:hover { color: var(--primary); transform: translateX(-5px); }
+        
+        .nav-title { font-size: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 800; }
+        .toc { list-style: none; padding: 0; border-left: 2px solid var(--border); }
+        .toc li { position: relative; }
+        .toc a {
+            display: block; padding: 10px 20px; color: var(--text-gray); text-decoration: none; 
+            font-size: 14px; font-weight: 600; transition: 0.3s;
+        }
+        .toc a:hover { color: white; }
+        .toc a.active { color: var(--primary); border-left: 2px solid var(--primary); margin-left: -2px; background: linear-gradient(90deg, rgba(76, 201, 240, 0.1), transparent); }
+
+        /* --- CONTENT --- */
+        .content { 
+            background: var(--surface); padding: 60px; border-radius: 20px; 
+            border: 1px solid var(--border); box-shadow: 0 0 50px rgba(0,0,0,0.3);
+        }
+        
+        h1 { font-size: 42px; margin-bottom: 10px; background: linear-gradient(90deg, white, var(--text-gray)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .last-updated { font-size: 14px; color: var(--text-gray); margin-bottom: 50px; display: block; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+
+        section { margin-bottom: 60px; scroll-margin-top: 40px; }
+        h2 { color: var(--primary); font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        p { color: var(--text-gray); margin-bottom: 20px; font-size: 16px; text-align: justify; }
+        
+        ul { background: rgba(255,255,255,0.02); padding: 25px 25px 25px 45px; border-radius: 12px; border: 1px solid var(--border); }
+        li { color: var(--text-gray); margin-bottom: 10px; }
+        strong { color: white; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .page-wrapper { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+            .content { padding: 30px; }
+            h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> На главную</a>
+            
+            <div class="nav-title">Содержание</div>
+            <ul class="toc">
+                <li><a href="#intro" class="nav-link active">1. Введение</a></li>
+                <li><a href="#collection" class="nav-link">2. Сбор информации</a></li>
+                <li><a href="#usage" class="nav-link">3. Использование данных</a></li>
+                <li><a href="#cookies" class="nav-link">4. Cookies и Технологии</a></li>
+                <li><a href="#security" class="nav-link">5. Защита данных</a></li>
+                <li><a href="#rights" class="nav-link">6. Права пользователя</a></li>
+                <li><a href="#contact" class="nav-link">7. Контакты</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Политика конфиденциальности</h1>
+            <span class="last-updated"><i class="far fa-clock"></i> Дата обновления: 13 декабря 2025</span>
+
+            <section id="intro">
+                <h2><i class="fas fa-shield-alt"></i> 1. Введение</h2>
+                <p>Настоящая Политика конфиденциальности (далее — «Политика») описывает порядок сбора, использования и защиты персональной информации пользователей веб-сайта <strong>Hasan Group</strong> (далее — «Сайт»). Мы уважаем вашу конфиденциальность и обязуемся защищать ваши персональные данные в соответствии с законодательством Республики Таджикистан и применимыми международными нормами (включая GDPR, где это применимо).</p>
+                <p>Используя Сайт, вы выражаете свое согласие с условиями настоящей Политики. Если вы не согласны с каким-либо пунктом, пожалуйста, воздержитесь от использования наших услуг.</p>
+            </section>
+
+            <section id="collection">
+                <h2><i class="fas fa-database"></i> 2. Сбор информации</h2>
+                <p>Мы собираем только минимально необходимый объем данных для обеспечения корректной работы Сайта и предоставления услуг.</p>
+                <ul>
+                    <li><strong>Персональные данные:</strong> Информация, которую вы добровольно предоставляете при заполнении форм обратной связи (Имя, E-mail, номер телефона, описание проекта).</li>
+                    <li><strong>Технические данные:</strong> Автоматически собираемая информация, включая IP-адрес, тип браузера, операционную систему, время посещения и просмотренные страницы. Эти данные обезличены и используются исключительно для аналитики.</li>
+                </ul>
+            </section>
+
+            <section id="usage">
+                <h2><i class="fas fa-tasks"></i> 3. Использование данных</h2>
+                <p>Собранная информация используется для следующих целей:</p>
+                <ul>
+                    <li>Обработка ваших запросов, заявок на разработку и предоставление консультаций;</li>
+                    <li>Улучшение качества работы Сайта, анализ пользовательского опыта и устранение технических ошибок;</li>
+                    <li>Защита Сайта от спама, мошенничества и кибератак;</li>
+                    <li>Связь с вами для уведомления о статусе проекта или важных обновлениях.</li>
+                </ul>
+                <p style="border-left: 3px solid var(--primary); padding-left: 15px; color: white;">Мы <strong>никогда</strong> не продаем, не передаем и не раскрываем ваши персональные данные третьим лицам в маркетинговых целях.</p>
+            </section>
+
+            <section id="cookies">
+                <h2><i class="fas fa-microchip"></i> 4. Cookies и Технологии отслеживания</h2>
+                <p>Сайт использует файлы cookies (небольшие текстовые файлы, сохраняемые на вашем устройстве) и технологию LocalStorage для:</p>
+                <ul>
+                    <li><strong>Функциональности:</strong> Сохранение ваших настроек (например, согласие с использованием cookies), чтобы вам не приходилось вводить их повторно.</li>
+                    <li><strong>Безопасности:</strong> Работа механизмов защиты от спама (Anti-Flood) и автоматических ботов.</li>
+                    <li><strong>Аналитики:</strong> Сбор анонимной статистики посещаемости для улучшения контента.</li>
+                </ul>
+                <p>Вы можете отключить использование cookies в настройках вашего браузера, однако это может повлиять на корректную работу некоторых функций Сайта.</p>
+            </section>
+
+            <section id="security">
+                <h2><i class="fas fa-lock"></i> 5. Защита данных</h2>
+                <p>Мы принимаем комплексные технические и организационные меры для защиты ваших данных от несанкционированного доступа, изменения или уничтожения:</p>
+                <ul>
+                    <li><strong>SSL-шифрование:</strong> Обмен данными между вашим браузером и Сайтом защищен протоколом HTTPS.</li>
+                    <li><strong>Content Security Policy (CSP):</strong> Внедрены строгие политики безопасности контента для защиты от XSS-атак и инъекций кода.</li>
+                    <li><strong>Безопасные шлюзы:</strong> Обработка данных форм осуществляется через защищенные сервисы (например, Formspree) с использованием спам-фильтров.</li>
+                </ul>
+            </section>
+
+            <section id="rights">
+                <h2><i class="fas fa-user-check"></i> 6. Права пользователя</h2>
+                <p>В соответствии с законодательством, вы имеете право:</p>
+                <ul>
+                    <li>Запросить информацию о том, какие ваши персональные данные мы обрабатываем;</li>
+                    <li>Потребовать исправления неточных или устаревших данных;</li>
+                    <li>Потребовать удаления ваших персональных данных («право на забвение»), за исключением случаев, когда хранение данных требуется по закону.</li>
+                </ul>
+            </section>
+
+            <section id="contact">
+                <h2><i class="fas fa-envelope"></i> 7. Контакты</h2>
+                <p>Если у вас возникли вопросы касательно данной Политики или вы хотите реализовать свои права, свяжитесь с нами:</p>
+                <div style="background: rgba(76, 201, 240, 0.1); padding: 20px; border-radius: 10px; border: 1px solid var(--primary);">
+                    <strong>Hasan Group (Хасан Абдуллоев)</strong><br>
+                    <strong>Email:</strong> abdulloevhasan965@gmail.com<br>
+                    <strong>Адрес:</strong> Истаравшан / Худжанд, Таджикистан
+                </div>
+            </section>
+            
+            <div style="margin-top: 60px; font-size: 12px; color: #555; text-align: center;">
+                © 2025 Hasan Group. Legal Department.
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

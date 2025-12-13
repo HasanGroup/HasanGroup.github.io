@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Hasan Group</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Те же стили для единого дизайна */
+        :root { --bg: #0b0c10; --surface: #15161c; --primary: #4cc9f0; --text: #ffffff; --text-gray: #94a3b8; --border: rgba(255, 255, 255, 0.08); }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Manrope', sans-serif; margin: 0; line-height: 1.8; }
+        
+        .page-wrapper { max-width: 1200px; margin: 0 auto; padding: 40px 20px; display: grid; grid-template-columns: 280px 1fr; gap: 60px; }
+        .sidebar { position: sticky; top: 40px; height: fit-content; }
+        .back-btn { display: inline-flex; align-items: center; gap: 10px; color: var(--text-gray); text-decoration: none; font-weight: 700; margin-bottom: 30px; transition: 0.3s; }
+        .back-btn:hover { color: var(--primary); transform: translateX(-5px); }
+        .nav-title { font-size: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 800; }
+        .toc { list-style: none; padding: 0; border-left: 2px solid var(--border); }
+        .toc a { display: block; padding: 10px 20px; color: var(--text-gray); text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .toc a:hover { color: white; }
+        .toc a.active { color: var(--primary); border-left: 2px solid var(--primary); margin-left: -2px; background: linear-gradient(90deg, rgba(76, 201, 240, 0.1), transparent); }
+        .content { background: var(--surface); padding: 60px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 0 50px rgba(0,0,0,0.3); }
+        h1 { font-size: 42px; margin-bottom: 10px; background: linear-gradient(90deg, white, var(--text-gray)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .last-updated { font-size: 14px; color: var(--text-gray); margin-bottom: 50px; display: block; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+        section { margin-bottom: 60px; scroll-margin-top: 40px; }
+        h2 { color: var(--primary); font-size: 24px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+        p, li { color: var(--text-gray); margin-bottom: 15px; font-size: 16px; text-align: justify; }
+        ul { background: rgba(255,255,255,0.02); padding: 25px 25px 25px 45px; border-radius: 12px; border: 1px solid var(--border); }
+        
+        @media (max-width: 900px) { .page-wrapper { grid-template-columns: 1fr; } .sidebar { display: none; } .content { padding: 30px; } h1 { font-size: 32px; } }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <aside class="sidebar">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> На главную</a>
+            <div class="nav-title">Условия</div>
+            <ul class="toc">
+                <li><a href="#general" class="nav-link active">1. Общие положения</a></li>
+                <li><a href="#ip" class="nav-link">2. Интеллектуальные права</a></li>
+                <li><a href="#usage" class="nav-link">3. Правила использования</a></li>
+                <li><a href="#services" class="nav-link">4. Услуги и Оплата</a></li>
+                <li><a href="#disclaimers" class="nav-link">5. Отказ от ответственности</a></li>
+                <li><a href="#jurisdiction" class="nav-link">6. Юрисдикция</a></li>
+                <li><a href="#changes" class="nav-link">7. Изменения условий</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <h1>Условия использования</h1>
+            <span class="last-updated"><i class="far fa-clock"></i> Вступают в силу: 13 декабря 2025</span>
+
+            <section id="general">
+                <h2><i class="fas fa-file-contract"></i> 1. Общие положения</h2>
+                <p>Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между Хасаном Абдуллоевым, основателем <strong>Hasan Group</strong> (далее — «Администрация»), и пользователем сети Интернет (далее — «Пользователь»), посещающим данный веб-сайт.</p>
+                <p>Используя Сайт, включая просмотр контента, отправку форм или скачивание материалов, вы подтверждаете свое полное и безоговорочное согласие с условиями настоящего Соглашения. Если вы не согласны с условиями, вы должны немедленно прекратить использование Сайта.</p>
+            </section>
+
+            <section id="ip">
+                <h2><i class="fas fa-copyright"></i> 2. Интеллектуальная собственность</h2>
+                <p>Весь контент, размещенный на Сайте, включая, но не ограничиваясь: текстовые материалы, графические изображения, логотипы, программный код, дизайн и структура страниц, является интеллектуальной собственностью Администрации и защищен законодательством об авторском праве.</p>
+                <ul>
+                    <li><strong>Разрешается:</strong> Использование материалов сайта в личных, некоммерческих целях, просмотр портфолио, цитирование с обязательной активной ссылкой на источник.</li>
+                    <li><strong>Запрещается:</strong> Копирование, модификация, распространение или коммерческое использование любых элементов сайта без письменного разрешения Администрации; создание "клонов" сайта или использование элементов бренда Hasan Group.</li>
+                </ul>
+            </section>
+
+            <section id="usage">
+                <h2><i class="fas fa-user-check"></i> 3. Правила использования</h2>
+                <p>Пользователь обязуется использовать Сайт только в законных целях и не совершать действий, которые могут нарушить его работоспособность.</p>
+                <ul>
+                    <li>Запрещены попытки несанкционированного доступа к управлению Сайтом или его серверам.</li>
+                    <li>Запрещено использование автоматизированных скриптов (ботов) для сбора информации или отправки спама через формы обратной связи.</li>
+                    <li>Пользователь несет ответственность за достоверность информации, предоставляемой при заполнении форм.</li>
+                </ul>
+            </section>
+
+            <section id="services">
+                <h2><i class="fas fa-tag"></i> 4. Услуги и Оплата</h2>
+                <p>Информация об услугах и ценах, представленная на Сайте, носит исключительно информационный характер и не является публичной офертой.</p>
+                <p>Конкретный перечень услуг, сроки выполнения и стоимость определяются в индивидуальном порядке и фиксируются в отдельном договоре или Техническом Задании, заключаемом между Исполнителем (Hasan Group) и Заказчиком.</p>
+            </section>
+
+            <section id="disclaimers">
+                <h2><i class="fas fa-exclamation-triangle"></i> 5. Ограничение ответственности</h2>
+                <p>Сайт предоставляется на условиях «как есть» (as is). Администрация не гарантирует, что работа Сайта будет бесперебойной, безошибочной или соответствовать ожиданиям Пользователя.</p>
+                <p>Администрация не несет ответственности за:</p>
+                <ul>
+                    <li>Любой прямой или косвенный ущерб, возникший в результате использования или невозможности использования Сайта;</li>
+                    <li>Содержание внешних ресурсов, ссылки на которые могут быть размещены на Сайте;</li>
+                    <li>Сбои в работе сторонних сервисов (хостинг, почтовые шлюзы), используемых для функционирования Сайта.</li>
+                </ul>
+            </section>
+
+            <section id="jurisdiction">
+                <h2><i class="fas fa-gavel"></i> 6. Разрешение споров и Юрисдикция</h2>
+                <p>Все споры и разногласия, возникающие в связи с исполнением настоящего Соглашения, решаются путем переговоров.</p>
+                <p>В случае невозможности достижения согласия, спор подлежит разрешению в соответствии с действующим законодательством Республики Таджикистан.</p>
+            </section>
+
+            <section id="changes">
+                <h2><i class="fas fa-sync-alt"></i> 7. Изменения условий</h2>
+                <p>Администрация оставляет за собой право в одностороннем порядке вносить изменения в настоящее Соглашение. Обновленная версия вступает в силу с момента ее публикации на Сайте. Пользователю рекомендуется периодически проверять данную страницу на предмет изменений.</p>
+            </section>
+            
+            <div style="margin-top: 60px; font-size: 12px; color: #555; text-align: center;">
+                © 2025 Hasan Group. Legal Department.
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= (sectionTop - 150)) { current = section.getAttribute('id'); }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+            });
+        });
+    </script>
+</body>
+</html>

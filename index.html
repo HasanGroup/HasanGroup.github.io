@@ -2,6 +2,21 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline' https://unpkg.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com;
+    img-src 'self' data: https://images.unsplash.com;
+    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+    form-action https://formspree.io;
+    frame-ancestors 'none';
+">
+
+<meta http-equiv="X-Frame-Options" content="DENY">
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="description" content="Hasan Group — разработка веб-сайтов, архитектурная визуализация и внедрение AI-решений в Таджикистане. Создаем цифровые экосистемы для бизнеса и НПО.">
     <meta name="keywords" content="Hasan Group, веб-дизайн Таджикистан, создание сайтов Истаравшан, Худжанд, IT услуги, Digital Tajikistan, Python разработка, архитектура">
     <meta name="author" content="Hasan Group">
@@ -724,9 +739,9 @@
                         Создаем цифровые продукты с душой и инженерной точностью.
                     </p>
                     <div class="socials">
-                        <a href="https://www.instagram.com/abdulloev.2oo7_/?__pwa=1#"><i class="fab fa-instagram"></i></a>
-                        <a href="https://t.me/Abdulloevhasan"><i class="fab fa-telegram"></i></a>
-                        <a href="https://wa.me/992023192727"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/abdulloev.2oo7_/?__pwa=1#" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/Abdulloevhasan" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+                        <a href="https://wa.me/992023192727" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -749,9 +764,13 @@
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom" style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); color: #555; font-size: 12px;">
-                © 2025 Hasan Group. All rights reserved.
-            </div>
+            <div class="footer-bottom" style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); color: #555; font-size: 12px; display: flex; flex-direction: column; gap: 10px;">
+    <div>© 2025 Hasan Group. All rights reserved.</div>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <a href="policy.html" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#4cc9f0'" onmouseout="this.style.color='#94a3b8'">Политика конфиденциальности</a>
+        <a href="terms.html" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#4cc9f0'" onmouseout="this.style.color='#94a3b8'">Пользовательское соглашение</a>
+    </div>
+</div>
         </div>
     </footer>
 
@@ -780,6 +799,102 @@
             toggle.querySelector('i').classList.add('fa-bars');
         });
     });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.querySelector('.contact-form');
+        const btn = form.querySelector('button[type="submit"]');
+        const COOLDOWN = 60000; // 60 секунд (1 минута)
+
+        // 1. При загрузке страницы проверяем: не забанен ли пользователь?
+        checkCooldown();
+
+        function checkCooldown() {
+            const lastSent = localStorage.getItem('lastSentTime');
+            
+            if (lastSent) {
+                const now = Date.now();
+                const diff = now - parseInt(lastSent);
+
+                // Если прошло меньше 60 секунд
+                if (diff < COOLDOWN) {
+                    const remaining = Math.ceil((COOLDOWN - diff) / 1000);
+                    startTimer(remaining);
+                }
+            }
+        }
+
+        // 2. Когда нажимают кнопку "Отправить"
+        form.addEventListener('submit', function(e) {
+            const lastSent = localStorage.getItem('lastSentTime');
+            
+            if (lastSent) {
+                const now = Date.now();
+                if (now - parseInt(lastSent) < COOLDOWN) {
+                    e.preventDefault(); // Останавливаем отправку
+                    alert("Пожалуйста, подождите перед отправкой следующего сообщения.");
+                    return;
+                }
+            }
+
+            // Если все ок:
+            // Запоминаем время отправки
+            localStorage.setItem('lastSentTime', Date.now());
+            
+            // Визуально показываем, что процесс пошел
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Отправляем...';
+            btn.style.opacity = '0.7';
+            // Форма отправится сама, так как мы не вызвали preventDefault() здесь
+        });
+
+        // 3. Функция красивого таймера на кнопке
+        function startTimer(seconds) {
+            btn.disabled = true; // Блокируем кнопку
+            btn.style.cursor = 'not-allowed';
+            btn.style.background = '#333'; // Делаем серой
+            
+            const originalText = 'Отправить'; // Текст кнопки по умолчанию
+            
+            const interval = setInterval(() => {
+                btn.innerHTML = `<i class="fas fa-clock"></i> Ждите ${seconds}с`;
+                seconds--;
+
+                if (seconds < 0) {
+                    clearInterval(interval);
+                    // Разблокируем
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    btn.style.cursor = 'pointer';
+                    btn.style.background = ''; // Возвращаем красивый цвет
+                    btn.style.opacity = '1';
+                }
+            }, 1000);
+        }
+    });
+</script>
+<div id="cookie-banner" style="position: fixed; bottom: -300px; left: 20px; right: 20px; max-width: 400px; background: rgba(21, 22, 28, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(76, 201, 240, 0.3); padding: 25px; border-radius: 16px; z-index: 10000; color: white; box-shadow: 0 0 30px rgba(76, 201, 240, 0.15); transition: bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; align-items: start; gap: 15px;">
+        <i class="fas fa-cookie" style="font-size: 24px; color: #4cc9f0;"></i>
+        <div>
+            <h4 style="margin: 0 0 5px 0; font-family: 'Manrope', sans-serif; font-size: 16px;">Cookies & Privacy</h4>
+            <p style="margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.5;">Мы используем куки для улучшения UX и аналитики. Продолжая, вы соглашаетесь с <a href="policy.html" style="color: #4cc9f0; text-decoration: underline;">Политикой</a>.</p>
+        </div>
+    </div>
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button onclick="acceptCookies()" style="padding: 10px 25px; border-radius: 6px; border: none; background: #4cc9f0; color: #0b0c10; font-weight: 800; cursor: pointer; font-family: 'Manrope', sans-serif; transition: 0.3s;">ACCEPT</button>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('load', () => {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => { document.getElementById('cookie-banner').style.bottom = '30px'; }, 2000);
+        }
+    });
+    function acceptCookies() {
+        document.getElementById('cookie-banner').style.bottom = '-300px';
+        localStorage.setItem('cookiesAccepted', 'true');
+    }
 </script>
 </body>
 </html>
