@@ -1,900 +1,1886 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' 'unsafe-inline' https://unpkg.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com;
-    img-src 'self' data: https://images.unsplash.com;
-    font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
-    form-action https://formspree.io;
-    frame-ancestors 'none';
-">
-
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; form-action https://formspree.io; frame-ancestors 'none';">
 <meta http-equiv="X-Frame-Options" content="DENY">
-
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Hasan Group — разработка веб-сайтов, архитектурная визуализация и внедрение AI-решений в Таджикистане. Создаем цифровые экосистемы для бизнеса и НПО.">
-    <meta name="keywords" content="Hasan Group, веб-дизайн Таджикистан, создание сайтов Истаравшан, Худжанд, IT услуги, Digital Tajikistan, Python разработка, архитектура">
-    <meta name="author" content="Hasan Group">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Hasan Group | Архитектура Цифрового Будущего">
-    <meta property="og:description" content="Веб-разработка, AI-решения и инженерный подход. Официальный сайт.">
-    <meta property="og:image" content="https://hasangroup.github.io/me.jpg"> <meta property="og:url" content="https://hasangroup.github.io/">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasan Group | Enterprise Ecosystem</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta name="description" content="Hasan Group — разработка веб-сайтов, архитектурная визуализация и внедрение AI-решений в Таджикистане.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasan Group | Enterprise Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <style>
-        /* --- 1. SETTINGS --- */
-        :root {
-            --bg: #0b0c10; /* Глубокий черный/синий */
-            --surface: #15161c;
-            --surface-hover: #1e1f26;
-            --primary: #4cc9f0; /* Неоновый голубой */
-            --accent: #4361ee; /* Глубокий синий */
-            --text: #ffffff;
-            --text-gray: #94a3b8;
-            --border: rgba(255, 255, 255, 0.08);
-        }
+<style>
+/* ====== THEMES ====== */
+:root{
+  --bg:#0b0c10;--surface:#13141a;--surface2:#1a1b23;--surface-hover:#1e1f28;
+  --primary:#4cc9f0;--accent:#4361ee;--glow:rgba(76,201,240,.25);
+  --text:#ffffff;--text-gray:#8b98b0;--border:rgba(255,255,255,.07);
+  --font-size-base:16px;
+  --grad:linear-gradient(135deg,#4cc9f0,#4361ee);
+  --section-gap:130px;
+}
+body.theme-light{--bg:#eef2f7;--surface:#fff;--surface2:#f4f7fb;--surface-hover:#e8eef6;--primary:#2563eb;--accent:#4f46e5;--glow:rgba(37,99,235,.2);--text:#0f172a;--text-gray:#64748b;--border:rgba(0,0,0,.09);--grad:linear-gradient(135deg,#2563eb,#4f46e5);}
+body.theme-cyber{--bg:#07000f;--surface:#110020;--surface2:#180030;--surface-hover:#200040;--primary:#e040fb;--accent:#00e5ff;--glow:rgba(224,64,251,.3);--text:#fff;--text-gray:#bf9fd4;--border:rgba(224,64,251,.12);--grad:linear-gradient(135deg,#e040fb,#00e5ff);}
+body.theme-sunset{--bg:#110500;--surface:#1e0c00;--surface2:#271000;--surface-hover:#331500;--primary:#ff7043;--accent:#ffab40;--glow:rgba(255,112,67,.25);--text:#fff8f0;--text-gray:#d4a080;--border:rgba(255,112,67,.12);--grad:linear-gradient(135deg,#ff7043,#ffab40);}
+body.theme-forest{--bg:#050e05;--surface:#0c1a0c;--surface2:#122012;--surface-hover:#182818;--primary:#69f0ae;--accent:#40c4ff;--glow:rgba(105,240,174,.2);--text:#f0fff4;--text-gray:#86efac;--border:rgba(105,240,174,.1);--grad:linear-gradient(135deg,#69f0ae,#40c4ff);}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Manrope', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.7;
-        }
+/* Holiday themes */
+body.holiday-nowruz{--primary:#4ade80;--accent:#facc15;--glow:rgba(74,222,128,.3);--grad:linear-gradient(135deg,#4ade80,#facc15);}
+body.holiday-newyear{--primary:#60a5fa;--accent:#c084fc;--glow:rgba(96,165,250,.3);--grad:linear-gradient(135deg,#60a5fa,#c084fc);}
+body.holiday-independence{--primary:#22d3ee;--accent:#4ade80;--glow:rgba(34,211,238,.3);--grad:linear-gradient(135deg,#22d3ee,#4ade80);}
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        h1, h2, h3, h4 { font-weight: 800; color: white; line-height: 1.2; }
-        a { text-decoration: none; transition: 0.3s; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:var(--font-size-base);}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;overflow-x:hidden;line-height:1.75;transition:background .5s,color .5s;}
+/* FIX: cursor:none only on desktop */
+@media(pointer:fine){body{cursor:none;}}
 
-        /* --- 2. HEADER --- */
-        header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(11, 12, 16, 0.8); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
-        }
-        .navbar { height: 80px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: 800; display: flex; align-items: center; gap: 10px; }
-        .logo i { color: var(--primary); }
-        
-        .nav-menu { display: flex; gap: 30px; }
-        .nav-link { font-size: 14px; font-weight: 600; color: var(--text-gray); text-transform: uppercase; }
-        .nav-link:hover { color: var(--primary); }
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px;}
 
-        .btn {
-            padding: 12px 30px; border-radius: 6px; font-weight: 700; font-size: 14px; cursor: pointer; border: none;
-            display: inline-flex; align-items: center; gap: 10px; transition: 0.3s;
-        }
-        .btn-primary { background: var(--primary); color: #000; }
-        .btn-primary:hover { background: white; box-shadow: 0 0 20px rgba(76, 201, 240, 0.4); }
-        .btn-outline { border: 1px solid var(--border); background: transparent; color: white; }
-        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+/* ====== WELCOME SCREEN ====== */
+#welcomeScreen{
+  position:fixed;inset:0;z-index:99998;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:32px;
+  transition:opacity .8s,transform .8s;
+}
+#welcomeScreen.out{opacity:0;transform:scale(1.05);pointer-events:none;}
+.welcome-logo{font-size:clamp(32px,6vw,64px);font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;}
+.welcome-sub{color:var(--text-gray);font-size:16px;text-align:center;max-width:400px;}
+.welcome-form{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px;}
+.welcome-input{
+  background:rgba(255,255,255,.06);border:1px solid var(--border);
+  padding:18px 22px;border-radius:14px;color:var(--text);
+  font-family:'Manrope',sans-serif;font-size:16px;text-align:center;
+  transition:.3s;outline:none;
+}
+.welcome-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--glow);}
+.welcome-btn{
+  padding:16px;border-radius:14px;background:var(--grad);color:#fff;
+  font-size:16px;font-weight:800;border:none;cursor:pointer;
+  font-family:'Manrope',sans-serif;transition:.3s;
+}
+.welcome-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px var(--glow);}
+.welcome-loader{
+  width:200px;height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;
+  display:none;
+}
+.welcome-loader-fill{height:100%;background:var(--grad);border-radius:2px;animation:loadFill 1.5s ease forwards;}
+@keyframes loadFill{from{width:0%}to{width:100%}}
 
-        /* --- 3. HERO (FULL SCREEN) --- */
-        .hero {
-            min-height: 100vh; display: flex; align-items: center; position: relative;
-            background: radial-gradient(circle at top right, rgba(67, 97, 238, 0.15), transparent 40%); 
-            padding-top: 120px;
-        }
-        .hero-content h1 { font-size: 64px; margin-bottom: 25px; }
-        .hero-content h1 span { color: var(--primary); }
-        .hero-content p { font-size: 20px; color: var(--text-gray); margin-bottom: 40px; max-width: 600px; }
-        
-        .hero-stats {
-            display: flex; gap: 50px; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border);
-        }
-        .h-stat strong { font-size: 32px; display: block; color: white; }
-        .h-stat span { font-size: 14px; color: var(--text-gray); text-transform: uppercase; }
-
-        /* --- 4. ABOUT (STORY) --- */
-        .section { padding: 120px 0; border-bottom: 1px solid var(--border); }
-        .section-header { margin-bottom: 80px; }
-        .section-tag { color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; display: block; margin-bottom: 20px; }
-        .section-header h2 { font-size: 48px; }
-
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-text p { margin-bottom: 20px; color: var(--text-gray); font-size: 18px; }
-        .about-img {
-            position: relative; border-radius: 20px; overflow: hidden;
-            border: 1px solid var(--border);
-        }
-        .about-img img { width: 100%; display: block; }
-        
-        /* --- 5. SERVICES (CARDS) --- */
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .srv-card {
-            background: var(--surface); padding: 40px; border-radius: 16px; border: 1px solid var(--border);
-            transition: 0.3s;
-        }
-        .srv-card:hover { transform: translateY(-10px); background: var(--surface-hover); border-color: var(--primary); }
-        .srv-icon { font-size: 40px; color: var(--primary); margin-bottom: 30px; }
-        .srv-card h3 { font-size: 24px; margin-bottom: 15px; }
-        .srv-card ul { list-style: none; color: var(--text-gray); margin-top: 20px; }
-        .srv-card li { margin-bottom: 10px; font-size: 14px; }
-        .srv-card li i { color: var(--primary); margin-right: 10px; }
-
-        /* --- 6. PROJECTS (ZIG-ZAG) --- */
-        .project-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 100px; align-items: center; }
-        .project-row.reverse { direction: rtl; } /* Меняет порядок для зигзага */
-        .project-row.reverse .project-info { direction: ltr; } /* Возвращает текст в норму */
-        
-        .project-preview {
-            height: 400px; background: #222; border-radius: 20px; overflow: hidden; border: 1px solid var(--border);
-            position: relative;
-        }
-        .project-preview img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .project-preview:hover img { transform: scale(1.05); }
-        
-        .project-info h3 { font-size: 36px; margin-bottom: 20px; }
-        .project-info p { color: var(--text-gray); margin-bottom: 30px; font-size: 16px; }
-        .tech-tags { display: flex; gap: 10px; margin-bottom: 30px; }
-        .tag { padding: 6px 14px; background: rgba(255,255,255,0.05); border-radius: 50px; font-size: 12px; font-weight: 600; }
-
-        /* --- 7. TECH STACK --- */
-        .stack-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
-        .stack-item {
-            background: var(--surface); padding: 20px; border-radius: 12px; text-align: center;
-            border: 1px solid var(--border); transition: 0.3s;
-        }
-        .stack-item:hover { border-color: var(--primary); background: rgba(76, 201, 240, 0.1); }
-        .stack-item i { font-size: 30px; color: white; margin-bottom: 10px; display: block; }
-        .stack-item span { font-size: 12px; color: var(--text-gray); font-weight: 600; }
-
-        /* --- 8. PRICING --- */
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .price-card {
-            background: var(--surface); padding: 50px 30px; border-radius: 20px; text-align: center; border: 1px solid var(--border);
-            position: relative; overflow: hidden;
-        }
-        .price-card.featured { border-color: var(--primary); background: rgba(76, 201, 240, 0.05); }
-        .price-card.featured::before { content:'POPULAR'; position: absolute; top: 20px; right: -30px; background: var(--primary); color: black; padding: 5px 40px; transform: rotate(45deg); font-size: 10px; font-weight: 800; }
-        
-        .price { font-size: 48px; font-weight: 800; margin: 20px 0; color: white; }
-        .price span { font-size: 16px; color: var(--text-gray); font-weight: 500; }
-        .price-features { margin: 30px 0; text-align: left; }
-        .price-features li { margin-bottom: 15px; color: var(--text-gray); }
-        .price-features i { color: var(--primary); margin-right: 10px; }
-
-        /* --- 9. BLOG --- */
-        /* --- 9. BLOG (UPGRADED) --- */
-.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-
-.blog-card { 
-    background: var(--surface); 
-    border-radius: 20px; 
-    overflow: hidden; 
-    border: 1px solid var(--border); 
-    transition: all 0.4s ease; 
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+/* Tour tooltip */
+#tourTooltip{
+  position:fixed;z-index:9999;background:rgba(11,12,16,.97);border:1px solid var(--primary);
+  border-radius:16px;padding:20px 24px;max-width:300px;pointer-events:none;
+  box-shadow:0 20px 60px var(--glow);transition:all .4s cubic-bezier(.23,1,.32,1);
+  display:none;
+}
+#tourTooltip.visible{display:block;}
+#tourTooltip h4{font-size:14px;color:var(--primary);font-weight:800;margin-bottom:8px;}
+#tourTooltip p{font-size:13px;color:var(--text-gray);line-height:1.5;}
+#tourTooltip .tour-arrow{
+  position:absolute;top:calc(100% + 1px);left:50%;transform:translateX(-50%);
+  width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;
+  border-top:8px solid var(--primary);
+}
+.tour-close{
+  position:absolute;top:10px;right:12px;background:none;border:none;
+  color:var(--text-gray);cursor:pointer;font-size:16px;pointer-events:all;
+}
+.tour-next-btn{
+  margin-top:12px;padding:8px 18px;border-radius:8px;background:var(--grad);
+  color:#fff;font-size:12px;font-weight:700;border:none;cursor:pointer;
+  pointer-events:all;font-family:'Manrope',sans-serif;
 }
 
-/* Эффект свечения и подъема при наведении */
-.blog-card:hover { 
-    transform: translateY(-10px); 
-    border-color: var(--primary); 
-    box-shadow: 0 20px 40px rgba(76, 201, 240, 0.15); 
+/* ====== GREETING ====== */
+#greetBar{
+  position:fixed;top:78px;left:0;right:0;z-index:900;
+  background:linear-gradient(90deg,rgba(76,201,240,.1),rgba(67,97,238,.1));
+  border-bottom:1px solid rgba(76,201,240,.15);
+  padding:10px 24px;display:none;align-items:center;justify-content:center;gap:12px;
+  backdrop-filter:blur(10px);font-size:14px;font-weight:700;
+}
+#greetBar.show{display:flex;}
+#greetBar span{color:var(--primary);}
+#greetBar .close-greet{cursor:pointer;color:var(--text-gray);margin-left:12px;font-size:12px;}
+
+/* ====== HOLIDAY BANNER ====== */
+#holidayBanner{
+  position:fixed;top:0;left:0;right:0;z-index:99997;
+  padding:14px 24px;display:none;align-items:center;justify-content:center;gap:16px;
+  font-size:15px;font-weight:800;text-align:center;
+  animation:slideDown .6s ease forwards;overflow:hidden;
+}
+#holidayBanner.show{display:flex;}
+#holidayBanner .hb-emoji{font-size:24px;animation:bounce 1s ease-in-out infinite alternate;}
+#holidayBanner .hb-close{cursor:pointer;opacity:.7;margin-left:16px;}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+@keyframes bounce{from{transform:scale(1);}to{transform:scale(1.2);}}
+
+/* Snowflakes / particles for holiday */
+.snow-wrap{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.snowflake{
+  position:absolute;top:-20px;font-size:18px;opacity:.7;
+  animation:snowFall linear infinite;
+}
+@keyframes snowFall{to{transform:translateY(100vh) rotate(360deg);opacity:0;}}
+
+/* Nowruz flowers */
+.flower{
+  position:absolute;font-size:22px;opacity:.6;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{from{transform:translateY(100vh) rotate(0);opacity:.6;}to{transform:translateY(-100px) rotate(720deg);opacity:0;}}
+
+/* ====== CURSOR — only on pointer:fine devices ====== */
+@media(pointer:fine){
+  .cursor-main{
+    position:fixed;pointer-events:none;z-index:99999;
+    width:12px;height:12px;border-radius:50%;
+    background:var(--primary);
+    transform:translate(-50%,-50%);
+    transition:width .15s,height .15s,background .15s;
+    mix-blend-mode:screen;
+  }
+  .cursor-trail{
+    position:fixed;pointer-events:none;z-index:99998;
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(76,201,240,.5);
+    transform:translate(-50%,-50%);
+    transition:all .12s cubic-bezier(.23,1,.32,1);
+  }
+  .cursor-trail.hover{
+    width:60px;height:60px;
+    background:rgba(76,201,240,.05);
+    border-color:var(--primary);
+  }
+  .cursor-trail.click{
+    width:20px;height:20px;
+    background:rgba(76,201,240,.2);
+  }
+  .trail-dot{
+    position:fixed;pointer-events:none;z-index:99990;
+    border-radius:50%;background:var(--primary);
+    transform:translate(-50%,-50%);
+    opacity:0;
+  }
 }
 
-.blog-img { 
-    height: 240px; 
-    overflow: hidden; 
-    position: relative;
+/* ====== PARTICLES ====== */
+#particles-canvas{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.3;}
+
+/* ====== WATERMARK ====== */
+.watermark-scene{position:fixed;inset:0;pointer-events:none;z-index:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.wm-text{font-size:clamp(70px,13vw,190px);font-weight:900;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;position:relative;user-select:none;color:transparent;-webkit-text-stroke:1px rgba(76,201,240,.08);animation:wmDrift 12s ease-in-out infinite;}
+.wm-text::before{content:'ABDULLOEV';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(76,201,240,0) 30%,rgba(76,201,240,.2) 50%,rgba(67,97,238,.15) 60%,transparent 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:wmSweep 5s ease-in-out infinite;}
+.wm-text::after{content:'ABDULLOEV';position:absolute;inset:0;-webkit-text-stroke:1px rgba(76,201,240,.04);color:transparent;filter:blur(8px);animation:wmBlur 6s ease-in-out infinite alternate;}
+@keyframes wmDrift{0%,100%{transform:translateY(0) rotate(-1.5deg) scale(1);}33%{transform:translateY(-18px) rotate(.5deg) scale(1.01);}66%{transform:translateY(10px) rotate(-.8deg) scale(.99);}}
+@keyframes wmSweep{0%{background-position:200% 0;}100%{background-position:-50% 0;}}
+@keyframes wmBlur{from{opacity:.3;filter:blur(6px);}to{opacity:.7;filter:blur(12px);}}
+.wm-diagonal{position:fixed;right:-80px;bottom:-30px;font-size:clamp(40px,7vw,100px);font-weight:900;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(76,201,240,.04);transform:rotate(-15deg);pointer-events:none;z-index:0;user-select:none;}
+
+/* ====== SCROLL TOP ====== */
+#scrollTopBtn{position:fixed;bottom:32px;right:32px;width:50px;height:50px;background:var(--grad);color:#000;border:none;border-radius:50%;font-size:18px;cursor:pointer;z-index:9000;display:none;align-items:center;justify-content:center;box-shadow:0 0 24px var(--glow);transition:transform .3s,box-shadow .3s;}
+#scrollTopBtn.show{display:flex;}
+#scrollTopBtn:hover{transform:scale(1.15) translateY(-4px);box-shadow:0 0 40px var(--glow);}
+
+/* ====== LANGUAGE SELECTOR ====== */
+#langBtn{
+  position:fixed;top:16px;left:16px;z-index:5005;
+  display:flex;align-items:center;gap:8px;
+  background:rgba(13,14,20,.88);border:1px solid var(--border);
+  border-radius:50px;padding:8px 14px;cursor:pointer;
+  font-size:13px;font-weight:700;color:var(--text);
+  backdrop-filter:blur(14px);transition:.25s;
 }
-
-.blog-img img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Кинематографичный зум */
+#langBtn:hover{border-color:var(--primary);}
+#langMenu{
+  position:fixed;top:60px;left:16px;z-index:5004;
+  background:rgba(10,11,16,.97);border:1px solid var(--border);
+  border-radius:16px;padding:10px;display:none;flex-direction:column;gap:3px;
+  backdrop-filter:blur(20px);min-width:200px;box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
-
-/* При наведении картинка приближается */
-.blog-card:hover .blog-img img { 
-    transform: scale(1.1); 
+#langMenu.open{display:flex;}
+.lang-opt{
+  display:flex;align-items:center;gap:12px;padding:10px 14px;
+  border-radius:10px;cursor:pointer;border:1px solid transparent;
+  transition:.2s;font-size:14px;font-weight:600;color:var(--text-gray);
+  background-size:cover;background-position:center;
+  position:relative;overflow:hidden;
 }
+.lang-opt::before{content:'';position:absolute;inset:0;background:rgba(10,11,16,.82);transition:.2s;}
+.lang-opt:hover::before,.lang-opt.active::before{background:rgba(10,11,16,.65);}
+.lang-opt>*{position:relative;z-index:1;}
+.lang-opt:hover,.lang-opt.active{border-color:var(--primary);color:var(--primary);}
+.lang-flag{font-size:20px;}
+.lang-name{flex:1;}
+.lang-code{font-size:11px;color:var(--text-gray);font-weight:800;}
 
-.blog-content { 
-    padding: 30px; 
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+/* ====== CLOCKS ====== */
+#clocksWidget{
+  position:fixed;top:16px;right:16px;z-index:5000;
+  display:flex;flex-direction:column;gap:0;
+  background:rgba(11,12,16,.88);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;backdrop-filter:blur(18px);
+  box-shadow:0 8px 32px rgba(0,0,0,.3);
 }
-
-.blog-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    font-size: 12px;
+#clocksToggle{
+  display:flex;align-items:center;gap:8px;padding:10px 16px;cursor:pointer;
+  font-size:13px;font-weight:700;color:var(--text);border:none;background:none;
+  font-family:'Manrope',sans-serif;transition:.2s;
 }
-
-.blog-tag {
-    background: rgba(255,255,255,0.05);
-    padding: 4px 10px;
-    border-radius: 50px;
-    color: var(--text-gray);
-    font-weight: 600;
+#clocksToggle:hover{color:var(--primary);}
+#clocksBody{display:none;border-top:1px solid var(--border);}
+#clocksBody.open{display:block;}
+.clk2{
+  display:flex;align-items:center;gap:0;padding:0;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
 }
-
-.blog-date { color: var(--primary); font-weight: 700; }
-
-.blog-card h3 { 
-    font-size: 20px; 
-    margin-bottom: 15px; 
-    line-height: 1.4;
+.clk2:last-child{border-bottom:none;}
+.clk2-flag-bg{
+  width:52px;height:48px;display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+  background-size:cover;background-position:center;
+  position:relative;
 }
+.clk2-flag-bg::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.35);}
+.clk2-flag-emoji{position:relative;z-index:1;}
+.clk2-info{padding:10px 14px;flex:1;}
+.clk2-city{font-size:10px;font-weight:700;color:var(--text-gray);text-transform:uppercase;letter-spacing:.4px;display:block;}
+.clk2-time{font-size:14px;font-weight:800;color:var(--primary);font-variant-numeric:tabular-nums;display:block;}
 
-.blog-link { 
-    color: white; 
-    font-weight: 600;
-    font-size: 14px; 
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: auto; /* Прижимает кнопку к низу */
-    transition: 0.3s;
+/* ====== CONTROLS ====== */
+#controlsPanel{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:5000;display:flex;flex-direction:column;gap:7px;align-items:center;}
+.ctrl-btn{width:42px;height:42px;background:rgba(13,14,20,.85);border:1px solid var(--border);border-radius:10px;color:var(--text-gray);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.25s;backdrop-filter:blur(12px);position:relative;}
+.ctrl-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(76,201,240,.08);}
+.ctrl-btn .tip{position:absolute;left:52px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.92);color:#fff;font-size:11px;padding:4px 10px;border-radius:6px;white-space:nowrap;pointer-events:none;opacity:0;transition:.2s;font-family:'Manrope',sans-serif;font-weight:600;}
+.ctrl-btn:hover .tip{opacity:1;}
+#fontSizeLabel{font-size:10px;color:var(--text-gray);text-align:center;font-weight:700;letter-spacing:.5px;}
+
+/* ====== THEME POPUP ====== */
+#themePop{position:fixed;left:68px;top:50%;transform:translateY(-50%);background:rgba(10,11,16,.96);border:1px solid var(--border);border-radius:16px;padding:18px;z-index:5001;display:none;flex-direction:column;gap:8px;backdrop-filter:blur(20px);min-width:170px;}
+#themePop.open{display:flex;}
+#themePop h6{font-size:10px;font-weight:800;color:var(--text-gray);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;}
+.topt{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;cursor:pointer;border:1px solid transparent;transition:.2s;font-size:13px;font-weight:600;color:var(--text-gray);}
+.topt:hover,.topt.active{border-color:var(--primary);color:var(--primary);background:rgba(76,201,240,.06);}
+.tdot{width:13px;height:13px;border-radius:50%;flex-shrink:0;}
+
+/* ====== COUNTDOWN ====== */
+#countdownWidget{
+  position:fixed;bottom:90px;right:32px;z-index:4000;
+  background:rgba(11,12,16,.92);border:1px solid var(--border);
+  border-radius:18px;padding:16px 20px;backdrop-filter:blur(16px);
+  text-align:center;min-width:180px;box-shadow:0 8px 32px rgba(0,0,0,.3);
+  transition:transform .3s,box-shadow .3s;
 }
+#countdownWidget:hover{transform:translateY(-4px);box-shadow:0 16px 48px var(--glow);}
+.cd-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--primary);margin-bottom:6px;display:block;}
+.cd-title{font-size:12px;color:var(--text-gray);font-weight:600;margin-bottom:10px;display:block;}
+.cd-numbers{display:flex;gap:8px;justify-content:center;}
+.cd-unit{display:flex;flex-direction:column;align-items:center;}
+.cd-num{font-size:22px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.cd-sub{font-size:9px;color:var(--text-gray);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
 
-.blog-card:hover .blog-link { color: var(--primary); }
+/* ====== HEADER ====== */
+header{position:fixed;top:0;width:100%;z-index:1000;background:rgba(11,12,16,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:background .3s;}
+body.theme-light header{background:rgba(238,242,247,.9);}
+.navbar{height:78px;display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:22px;font-weight:900;display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;}
+.logo i{color:var(--primary);animation:logoSpin 10s linear infinite;}
+@keyframes logoSpin{0%,88%,100%{transform:rotate(0);}94%{transform:rotate(360deg);}}
+.nav-menu{display:flex;gap:28px;}
+.nav-link{font-size:13px;font-weight:700;color:var(--text-gray);text-transform:uppercase;letter-spacing:.5px;transition:.2s;position:relative;text-decoration:none;}
+.nav-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--primary);transition:width .3s;}
+.nav-link:hover{color:var(--primary);}
+.nav-link:hover::after{width:100%;}
 
-        /* --- 10. CONTACT --- */
-        .contact-box {
-            background: var(--surface); padding: 80px; border-radius: 30px; border: 1px solid var(--border);
-            text-align: center; max-width: 800px; margin: 0 auto;
-        }
-        .contact-form { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .full-width { grid-column: span 2; }
-        .input-field {
-            background: rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 20px; border-radius: 8px;
-            color: white; font-family: inherit;
-        }
-        .input-field:focus { border-color: var(--primary); outline: none; }
+.btn{padding:11px 28px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:9px;transition:.3s;font-family:'Manrope',sans-serif;text-decoration:none;}
+.btn-primary{background:var(--grad);color:#fff;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px var(--glow);}
+.btn-outline{border:1px solid var(--border);background:transparent;color:var(--text);}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);}
 
-        /* --- FOOTER --- */
-        footer { padding: 80px 0 40px; border-top: 1px solid var(--border); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; }
-        .socials a { width: 40px; height: 40px; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 10px; color: white; transition: 0.3s; }
-        .socials a:hover { background: var(--primary); color: black; border-color: var(--primary); }
+/* ====== HERO ====== */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding-top:110px;padding-bottom:60px;background:radial-gradient(ellipse 80% 60% at 70% 20%,rgba(67,97,238,.12),transparent 60%),radial-gradient(ellipse 50% 40% at 10% 80%,rgba(76,201,240,.07),transparent 50%);}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(76,201,240,.08);border:1px solid rgba(76,201,240,.25);border-radius:50px;padding:7px 16px;margin-bottom:22px;font-size:13px;font-weight:700;color:var(--primary);}
+.live-dot{width:6px;height:6px;background:var(--primary);border-radius:50%;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.hero-content h1{font-size:clamp(38px,6vw,70px);margin-bottom:22px;line-height:1.1;font-weight:900;}
+.hero-content h1 .hl{color:var(--primary);}
+.hero-content p{font-size:19px;color:var(--text-gray);margin-bottom:38px;max-width:580px;line-height:1.7;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:48px;margin-top:58px;padding-top:36px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.h-stat strong{font-size:30px;display:block;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.h-stat span{font-size:12px;color:var(--text-gray);text-transform:uppercase;letter-spacing:.8px;font-weight:700;}
 
-        /* --- MOBILE STYLES (АДАПТИВНОСТЬ) --- */
-@media (max-width: 768px) {
-    /* 1. Включаем кнопку меню */
-    .menu-toggle { display: block !important; color: white; }
-    .desktop-btn { display: none !important; } /* Прячем большую кнопку */
+.tw-wrap{display:inline-flex;align-items:center;gap:3px;}
+#tw{color:var(--primary);}
+.tw-cur{display:inline-block;width:3px;height:1.05em;background:var(--primary);vertical-align:text-bottom;animation:blink .8s step-end infinite;}
+.glitch{position:relative;display:inline-block;}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;}
+.glitch::before{color:var(--primary);animation:g1 5s infinite;clip-path:polygon(0 0,100% 0,100% 35%,0 35%);opacity:0;}
+.glitch::after{color:#4361ee;animation:g2 5s infinite;clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);opacity:0;}
+@keyframes g1{0%,92%,100%{opacity:0;}93%{opacity:.8;transform:translate(-3px) skewX(-5deg);}95%{opacity:0;}}
+@keyframes g2{0%,93%,100%{opacity:0;}94%{opacity:.7;transform:translate(3px) skewX(4deg);}96%{opacity:0;}}
 
-    /* 2. Делаем выпадающее меню */
-    .nav-menu {
-        position: fixed;
-        top: 80px; left: -100%; /* Спрятано слева */
-        width: 100%; height: 100vh;
-        background: rgba(11, 12, 16, 0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s;
-    }
-    .nav-menu.active { left: 0; /* Выезжает при нажатии */ }
-    .nav-link { font-size: 24px; margin-bottom: 30px; }
+/* ====== SECTIONS ====== */
+.section{padding:var(--section-gap) 0;border-bottom:1px solid var(--border);position:relative;}
+.container{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+.sec-tag{color:var(--primary);font-weight:800;text-transform:uppercase;letter-spacing:2.5px;font-size:11px;display:block;margin-bottom:14px;}
+.sec-head h2{font-size:clamp(30px,4vw,50px);font-weight:900;line-height:1.15;}
+.sec-head{margin-bottom:70px;}
+.sec-divider{width:48px;height:3px;background:var(--grad);border-radius:2px;margin-top:16px;}
 
-    /* 3. Уменьшаем гигантские шрифты */
-    .hero-content h1 { font-size: 36px; line-height: 1.2; }
-    .hero-content p { font-size: 16px; }
-    .section-header h2 { font-size: 32px; }
-    
-    /* 4. Выстраиваем блоки в одну колонку */
-    .about-grid, .services-grid, .project-row, .project-row.reverse, .pricing-grid, .blog-grid, .footer-grid, .contact-form {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        direction: ltr !important; /* Отменяет зигзаг для мобильных */
-    }
+/* ====== ABOUT ====== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-text p{margin-bottom:18px;color:var(--text-gray);font-size:17px;}
+.about-img{border-radius:24px;overflow:hidden;border:1px solid var(--border);position:relative;}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(76,201,240,.1),transparent);pointer-events:none;}
+.about-img img{width:100%;display:block;}
 
-    /* 5. Убираем лишние отступы */
-    .section { padding: 60px 0; }
-    .hero { padding-top: 100px; padding-bottom: 60px; height: auto; min-height: 100vh; }
-    .hero-stats { flex-wrap: wrap; gap: 20px; }
-    
-    /* 6. Картинки на телефоне */
-    .about-img, .project-preview { height: 300px; }
-    /* Исправление формы для телефона */
-    .contact-form {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    .input-field {
-        width: 100% !important;
-    }
-    .full-width {
-        width: 100% !important;
-    }
+/* ====== SERVICES ====== */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.srv-card{background:var(--surface);padding:38px;border-radius:18px;border:1px solid var(--border);transition:.35s;position:relative;overflow:hidden;}
+.srv-card::before{content:'';position:absolute;top:-60px;right:-60px;width:150px;height:150px;background:radial-gradient(circle,var(--glow),transparent 70%);opacity:0;transition:.4s;}
+.srv-card:hover{transform:translateY(-10px);background:var(--surface-hover);border-color:var(--primary);}
+.srv-card:hover::before{opacity:1;}
+.srv-icon{font-size:38px;color:var(--primary);margin-bottom:26px;display:block;}
+.srv-card h3{font-size:22px;margin-bottom:12px;}
+.srv-card p{color:var(--text-gray);font-size:15px;}
+.srv-card ul{list-style:none;color:var(--text-gray);margin-top:18px;}
+.srv-card li{margin-bottom:9px;font-size:14px;}
+.srv-card li i{color:var(--primary);margin-right:9px;}
+
+/* ====== STACK ====== */
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;}
+.stack-item{background:var(--surface);padding:22px 16px;border-radius:14px;text-align:center;border:1px solid var(--border);transition:.3s;cursor:default;}
+.stack-item:hover{border-color:var(--primary);background:rgba(76,201,240,.06);transform:translateY(-5px);}
+.stack-item i{font-size:28px;margin-bottom:10px;display:block;}
+.stack-item span{font-size:12px;color:var(--text-gray);font-weight:700;display:block;}
+.stack-item small{font-size:10px;color:#444;margin-top:4px;display:block;}
+
+/* ====== PROJECTS ====== */
+.project-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:90px;align-items:center;}
+.project-row.reverse{direction:rtl;}
+.project-row.reverse .project-info{direction:ltr;}
+.project-preview{height:390px;background:#1a1b23;border-radius:22px;overflow:hidden;border:1px solid var(--border);position:relative;}
+.project-preview img{width:100%;height:100%;object-fit:cover;transition:.6s;}
+.project-preview:hover img{transform:scale(1.06);}
+.project-info h3{font-size:32px;margin-bottom:16px;color:var(--text);}
+.project-info p{color:var(--text-gray);margin-bottom:26px;font-size:15px;}
+.tech-tags{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
+.tag{padding:5px 13px;background:rgba(255,255,255,.05);border-radius:50px;font-size:11px;font-weight:700;color:var(--text-gray);letter-spacing:.5px;}
+
+/* ====== PRICING ====== */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.price-card{background:var(--surface);padding:46px 28px;border-radius:22px;text-align:center;border:1px solid var(--border);position:relative;overflow:hidden;transition:.3s;}
+.price-card:hover{transform:translateY(-6px);border-color:var(--primary);}
+.price-card.featured{border-color:var(--primary);background:linear-gradient(180deg,rgba(76,201,240,.06),transparent);}
+.price-card.featured::before{content:'POPULAR';position:absolute;top:18px;right:-28px;background:var(--grad);color:#fff;padding:4px 38px;transform:rotate(45deg);font-size:10px;font-weight:900;}
+.price{font-size:46px;font-weight:900;margin:18px 0;color:var(--text);}
+.price span{font-size:15px;color:var(--text-gray);font-weight:500;}
+.price-features{margin:26px 0;text-align:left;}
+.price-features li{margin-bottom:13px;color:var(--text-gray);font-size:14px;}
+.price-features i{color:var(--primary);margin-right:10px;}
+
+/* ====== QUIZ ====== */
+.quiz-shell{background:var(--surface);border:1px solid var(--border);border-radius:26px;padding:52px;max-width:820px;margin:0 auto;position:relative;overflow:hidden;}
+.quiz-shell::before{content:'';position:absolute;top:-80px;right:-80px;width:200px;height:200px;background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none;}
+.quiz-prog-wrap{margin-bottom:32px;}
+.quiz-prog-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.quiz-prog-fill{height:100%;background:var(--grad);border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1);}
+.quiz-prog-label{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--text-gray);font-weight:700;}
+.quiz-q-num{display:inline-block;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900;font-size:13px;margin-bottom:10px;letter-spacing:.5px;}
+.quiz-question{font-size:21px;font-weight:800;margin-bottom:28px;line-height:1.4;color:var(--text);}
+.quiz-options{display:flex;flex-direction:column;gap:11px;margin-bottom:24px;}
+.quiz-opt{padding:16px 22px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;cursor:pointer;font-size:15px;color:var(--text);transition:.25s;text-align:left;font-family:'Manrope',sans-serif;font-weight:600;position:relative;overflow:hidden;}
+.quiz-opt:hover:not(:disabled){border-color:var(--primary);background:rgba(76,201,240,.06);transform:translateX(5px);}
+.quiz-opt.correct{border-color:#4ade80;background:rgba(74,222,128,.1);color:#4ade80;}
+.quiz-opt.wrong{border-color:#f87171;background:rgba(248,113,113,.1);color:#f87171;}
+.quiz-opt:disabled{cursor:not-allowed;}
+.quiz-feedback{font-size:14px;font-weight:700;margin-bottom:22px;min-height:22px;padding:12px 16px;border-radius:10px;background:rgba(255,255,255,.03);border-left:3px solid var(--primary);color:var(--text-gray);opacity:0;transition:opacity .3s;}
+.quiz-feedback.show{opacity:1;}
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;}
+.quiz-score-badge{display:flex;gap:6px;}
+.quiz-s-dot{width:8px;height:8px;border-radius:50%;background:var(--border);}
+.quiz-s-dot.ok{background:#4ade80;}
+.quiz-s-dot.fail{background:#f87171;}
+.quiz-result{display:none;text-align:center;padding:20px 0;}
+.quiz-result h3{font-size:26px;margin-bottom:14px;}
+.score-ring-wrap{position:relative;width:160px;height:160px;margin:0 auto 24px;}
+.score-ring-wrap svg{transform:rotate(-90deg);}
+.score-ring-bg{fill:none;stroke:var(--border);stroke-width:10;}
+.score-ring-fill{fill:none;stroke:url(#scoreGrad);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-big{font-size:44px;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+.score-sub{font-size:12px;color:var(--text-gray);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.quiz-cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:20px 0;text-align:left;}
+.quiz-cat{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text-gray);}
+.quiz-cat strong{color:var(--text);display:block;margin-bottom:3px;}
+
+/* ====== CALENDAR ====== */
+.calendar-wrap{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:32px;max-width:420px;}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.cal-header h3{font-size:18px;font-weight:800;}
+.cal-nav{width:34px;height:34px;background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;font-size:14px;}
+.cal-nav:hover{border-color:var(--primary);color:var(--primary);}
+.cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px;}
+.cal-dow span{text-align:center;font-size:11px;font-weight:800;color:var(--text-gray);padding:6px 0;text-transform:uppercase;letter-spacing:.5px;}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;color:var(--text-gray);background:transparent;border:none;font-family:'Manrope',sans-serif;position:relative;}
+.cal-day:hover{background:rgba(76,201,240,.1);color:var(--primary);}
+.cal-day.today{background:var(--grad);color:#fff;box-shadow:0 4px 14px var(--glow);}
+.cal-day.other-month{opacity:.3;}
+.cal-day.selected{border:1.5px solid var(--primary);color:var(--primary);background:rgba(76,201,240,.06);}
+.cal-day.has-event::after{content:'';position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--primary);border-radius:50%;}
+.cal-day.is-holiday{color:#facc15 !important;font-weight:900;}
+.cal-day.is-holiday::before{content:'🎉';position:absolute;top:-8px;right:-2px;font-size:10px;}
+
+/* ====== CONTACT ====== */
+.contact-box{background:var(--surface);padding:72px;border-radius:30px;border:1px solid var(--border);text-align:center;max-width:820px;margin:0 auto;}
+.contact-form{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.full-width{grid-column:span 2;}
+.input-field{background:rgba(255,255,255,.04);border:1px solid var(--border);padding:18px 20px;border-radius:10px;color:var(--text);font-family:'Manrope',sans-serif;font-size:15px;transition:.2s;width:100%;}
+body.theme-light .input-field{background:rgba(255,255,255,.8);}
+.input-field:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px var(--glow);}
+
+/* ====== FOOTER ====== */
+footer{padding:72px 0 36px;border-top:1px solid var(--border);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;}
+.foot-logo{font-size:20px;font-weight:900;display:flex;align-items:center;gap:8px;color:var(--text);margin-bottom:16px;text-decoration:none;}
+.foot-logo i{color:var(--primary);}
+.socials a{width:38px;height:38px;border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;border-radius:50%;margin-right:8px;color:var(--text);transition:.3s;}
+.socials a:hover{background:var(--primary);color:#000;border-color:var(--primary);}
+footer h4{color:var(--text);font-size:15px;margin-bottom:18px;}
+footer ul{list-style:none;}
+footer li{margin-bottom:10px;}
+footer a{color:var(--text-gray);transition:.2s;}
+footer a:hover{color:var(--primary);}
+
+/* ====== RIPPLE ====== */
+.ripple-effect{position:absolute;border-radius:50%;background:rgba(76,201,240,.25);transform:scale(0);animation:ripple .6s linear;pointer-events:none;}
+@keyframes ripple{to{transform:scale(4);opacity:0;}}
+
+/* ====== MOBILE ====== */
+@media(max-width:900px){
+  .menu-toggle{display:block !important;color:var(--text);}
+  .desktop-btn{display:none !important;}
+  .nav-menu{position:fixed;top:78px;left:-100%;width:100%;height:100vh;background:rgba(7,8,12,.97);backdrop-filter:blur(14px);flex-direction:column;justify-content:center;align-items:center;transition:.4s;gap:0;}
+  .nav-menu.active{left:0;}
+  .nav-link{font-size:22px;margin-bottom:28px;}
+  .hero-content h1{font-size:clamp(30px,8vw,44px);}
+  .hero-content p{font-size:16px;}
+  .sec-head h2{font-size:28px;}
+  .about-grid,.project-row,.project-row.reverse,.pricing-grid,.services-grid,.footer-grid,.contact-form{grid-template-columns:1fr !important;direction:ltr !important;gap:30px;}
+  .section{padding:70px 0;}
+  .hero{padding-top:100px;}
+  .hero-stats{gap:22px;}
+  #controlsPanel,#clocksWidget{display:none;}
+  #langBtn{top:auto;bottom:90px;left:16px;}
+  .full-width{grid-column:span 1;}
+  .quiz-shell{padding:28px 20px;}
+  .contact-box{padding:36px 20px;}
+  .quiz-cat-grid{grid-template-columns:1fr;}
+  #countdownWidget{display:none;}
+  /* FIX: Hide custom cursor elements on touch devices */
+  .cursor-main,.cursor-trail,.trail-dot{display:none !important;}
 }
-    </style>
+</style>
 </head>
 <body>
 
-    <header>
-    <div class="container navbar">
-        <a href="#" class="logo"><i class="fas fa-cube"></i> HASAN GROUP</a>
-        
-        <div class="menu-toggle" style="display: none; font-size: 24px; cursor: pointer;">
-            <i class="fas fa-bars"></i>
-        </div>
+<!-- CURSORS (hidden on touch via CSS) -->
+<div class="cursor-main" id="cursorMain"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
 
-        <nav class="nav-menu">
-            <a href="#about" class="nav-link">Обо мне</a>
-            <a href="#services" class="nav-link">Услуги</a>
-            <a href="#projects" class="nav-link">Проекты</a>
-            <a href="#pricing" class="nav-link">Цены</a>
-            <a href="#blog" class="nav-link">Блог</a>
-        </nav>
-        
-        <a href="#contact" class="btn btn-primary desktop-btn">Начать проект</a>
-    </div>
+<!-- PARTICLES -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- WATERMARK -->
+<div class="watermark-scene"><div class="wm-text">ABDULLOEV</div></div>
+<div class="wm-diagonal">HASAN</div>
+
+<!-- HOLIDAY BANNER -->
+<div id="holidayBanner">
+  <span class="hb-emoji" id="hbEmoji">🎉</span>
+  <span id="hbText">Праздник!</span>
+  <span class="hb-close" onclick="document.getElementById('holidayBanner').style.display='none'">✕</span>
+</div>
+
+<!-- HOLIDAY PARTICLES -->
+<div class="snow-wrap" id="snowWrap"></div>
+
+<!-- WELCOME SCREEN -->
+<div id="welcomeScreen">
+  <div class="welcome-logo">HASAN GROUP</div>
+  <div class="welcome-sub" id="welcomeSub">Добро пожаловать! Как вас зовут?</div>
+  <div class="welcome-form">
+    <input class="welcome-input" id="nameInput" placeholder="Введите ваше имя..." maxlength="40" autocomplete="off">
+    <div class="welcome-loader" id="welcomeLoader"><div class="welcome-loader-fill"></div></div>
+    <button class="welcome-btn" id="welcomeBtn" onclick="startExperience()">Войти на сайт ✦</button>
+  </div>
+</div>
+
+<!-- TOUR TOOLTIP -->
+<div id="tourTooltip">
+  <button class="tour-close" onclick="closeTour()">✕</button>
+  <div class="tour-arrow"></div>
+  <div class="quiz-q-num" id="tourStep">1/5</div>
+  <h4 id="tourTitle">Добро пожаловать!</h4>
+  <p id="tourDesc">Давайте познакомимся с сайтом.</p>
+  <button class="tour-next-btn" onclick="nextTour()">Далее →</button>
+</div>
+
+<!-- GREETING BAR -->
+<div id="greetBar">
+  <span>👋</span> <span id="greetName">Привет!</span> — <span id="greetMsg">Добро пожаловать в Hasan Group!</span>
+  <span class="close-greet" onclick="document.getElementById('greetBar').classList.remove('show')">✕ закрыть</span>
+</div>
+
+<!-- SCROLL TOP -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- LANGUAGE SELECTOR -->
+<div id="langBtn" onclick="toggleLangMenu()">
+  <span id="currentFlag">🇷🇺</span>
+  <span id="currentLangName">RU</span>
+  <i class="fas fa-chevron-down" style="font-size:10px;color:var(--text-gray);"></i>
+</div>
+<div id="langMenu">
+  <div class="lang-opt active" onclick="setLang('ru')" data-lang="ru" style="background-image:url('https://flagcdn.com/w80/ru.png')">
+    <span class="lang-flag">🇷🇺</span><span class="lang-name">Русский</span><span class="lang-code">RU</span>
+  </div>
+  <div class="lang-opt" onclick="setLang('en')" data-lang="en" style="background-image:url('https://flagcdn.com/w80/gb.png')">
+    <span class="lang-flag">🇬🇧</span><span class="lang-name">English</span><span class="lang-code">EN</span>
+  </div>
+  <div class="lang-opt" onclick="setLang('tg')" data-lang="tg" style="background-image:url('https://flagcdn.com/w80/tj.png')">
+    <span class="lang-flag">🇹🇯</span><span class="lang-name">Тоҷикӣ</span><span class="lang-code">TJ</span>
+  </div>
+  <div class="lang-opt" onclick="setLang('ar')" data-lang="ar" style="background-image:url('https://flagcdn.com/w80/sa.png')">
+    <span class="lang-flag">🇸🇦</span><span class="lang-name">العربية</span><span class="lang-code">AR</span>
+  </div>
+  <div class="lang-opt" onclick="setLang('zh')" data-lang="zh" style="background-image:url('https://flagcdn.com/w80/cn.png')">
+    <span class="lang-flag">🇨🇳</span><span class="lang-name">中文</span><span class="lang-code">ZH</span>
+  </div>
+</div>
+
+<!-- CLOCKS WIDGET -->
+<div id="clocksWidget">
+  <button id="clocksToggle" onclick="toggleClocks()">
+    <i class="fas fa-clock" style="color:var(--primary);"></i>
+    <span id="clockToggleLabel">Время в мире</span>
+    <i class="fas fa-chevron-down" style="font-size:10px;color:var(--text-gray);margin-left:4px;" id="clockChevron"></i>
+  </button>
+  <div id="clocksBody">
+    <div class="clk2"><div class="clk2-flag-bg" style="background-image:url('https://flagcdn.com/w80/tj.png')"><span class="clk2-flag-emoji">🇹🇯</span></div><div class="clk2-info"><span class="clk2-city">Душанбе</span><span class="clk2-time" id="c0">--:--:--</span></div></div>
+    <div class="clk2"><div class="clk2-flag-bg" style="background-image:url('https://flagcdn.com/w80/ru.png')"><span class="clk2-flag-emoji">🇷🇺</span></div><div class="clk2-info"><span class="clk2-city">Москва</span><span class="clk2-time" id="c1">--:--:--</span></div></div>
+    <div class="clk2"><div class="clk2-flag-bg" style="background-image:url('https://flagcdn.com/w80/ae.png')"><span class="clk2-flag-emoji">🇦🇪</span></div><div class="clk2-info"><span class="clk2-city">Дубай</span><span class="clk2-time" id="c2">--:--:--</span></div></div>
+    <div class="clk2"><div class="clk2-flag-bg" style="background-image:url('https://flagcdn.com/w80/us.png')"><span class="clk2-flag-emoji">🇺🇸</span></div><div class="clk2-info"><span class="clk2-city">Нью-Йорк</span><span class="clk2-time" id="c3">--:--:--</span></div></div>
+    <div class="clk2"><div class="clk2-flag-bg" style="background-image:url('https://flagcdn.com/w80/gb.png')"><span class="clk2-flag-emoji">🇬🇧</span></div><div class="clk2-info"><span class="clk2-city">Лондон</span><span class="clk2-time" id="c4">--:--:--</span></div></div>
+    <div class="clk2"><div class="clk2-flag-bg" style="background-image:url('https://flagcdn.com/w80/jp.png')"><span class="clk2-flag-emoji">🇯🇵</span></div><div class="clk2-info"><span class="clk2-city">Токио</span><span class="clk2-time" id="c5">--:--:--</span></div></div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div id="controlsPanel">
+  <div class="ctrl-btn" onclick="toggleTheme()"><i class="fas fa-palette"></i><span class="tip" data-i18n="theme">Тема</span></div>
+  <div class="ctrl-btn" onclick="changeFontSize(1)"><i class="fas fa-plus"></i><span class="tip">+</span></div>
+  <div id="fontSizeLabel">16px</div>
+  <div class="ctrl-btn" onclick="changeFontSize(-1)"><i class="fas fa-minus"></i><span class="tip">−</span></div>
+  <div class="ctrl-btn" onclick="resetFontSize()"><i class="fas fa-text-height"></i><span class="tip">Сброс</span></div>
+</div>
+
+<!-- THEME POPUP -->
+<div id="themePop">
+  <h6 data-i18n="themeTitle">Тема интерфейса</h6>
+  <div class="topt active" onclick="setTheme('dark')" data-t="dark"><div class="tdot" style="background:linear-gradient(135deg,#0b0c10,#4cc9f0)"></div>Тёмная</div>
+  <div class="topt" onclick="setTheme('light')" data-t="light"><div class="tdot" style="background:linear-gradient(135deg,#eef2f7,#2563eb)"></div>Светлая</div>
+  <div class="topt" onclick="setTheme('cyber')" data-t="cyber"><div class="tdot" style="background:linear-gradient(135deg,#07000f,#e040fb)"></div>Кибер</div>
+  <div class="topt" onclick="setTheme('sunset')" data-t="sunset"><div class="tdot" style="background:linear-gradient(135deg,#110500,#ff7043)"></div>Закат</div>
+  <div class="topt" onclick="setTheme('forest')" data-t="forest"><div class="tdot" style="background:linear-gradient(135deg,#050e05,#69f0ae)"></div>Лес</div>
+</div>
+
+<!-- COUNTDOWN -->
+<div id="countdownWidget">
+  <span class="cd-label" data-i18n="countdown">ОБРАТНЫЙ ОТСЧЁТ</span>
+  <span class="cd-title" id="cdTitle">...</span>
+  <div class="cd-numbers">
+    <div class="cd-unit"><div class="cd-num" id="cdD">00</div><div class="cd-sub" data-i18n="days">дней</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cdH">00</div><div class="cd-sub" data-i18n="hours">ч</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cdM">00</div><div class="cd-sub" data-i18n="mins">мин</div></div>
+    <div class="cd-unit"><div class="cd-num" id="cdS">00</div><div class="cd-sub" data-i18n="secs">сек</div></div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+<div class="container navbar">
+  <a href="#" class="logo"><i class="fas fa-cube"></i> HASAN GROUP</a>
+  <div class="menu-toggle" style="display:none;font-size:22px;cursor:pointer;"><i class="fas fa-bars"></i></div>
+  <nav class="nav-menu">
+    <a href="#about" class="nav-link" data-i18n="nav_about">Обо мне</a>
+    <a href="#services" class="nav-link" data-i18n="nav_services">Услуги</a>
+    <a href="#projects" class="nav-link" data-i18n="nav_projects">Проекты</a>
+    <a href="#pricing" class="nav-link" data-i18n="nav_pricing">Цены</a>
+    <a href="#quiz" class="nav-link" data-i18n="nav_quiz">Тест</a>
+    <a href="#calendar" class="nav-link" data-i18n="nav_calendar">Календарь</a>
+  </nav>
+  <a href="#contact" class="btn btn-primary desktop-btn" data-i18n="nav_cta">Начать проект</a>
+</div>
 </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <h1>Архитектура<br>Вашего <span>Цифрового</span><br>Будущего</h1>
-                <p>
-                    Hasan Group — это слияние веб-технологий, инженерного подхода и философии Кайдзен. 
-                    Мы создаем сайты, софт и дизайн-системы из Истаравшана для всего мира.
-                </p>
-                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                    <a href="#projects" class="btn btn-primary">Смотреть проекты <i class="fas fa-arrow-right"></i></a>
-                    <a href="#about" class="btn btn-outline">Читать историю</a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="h-stat"><strong>3+</strong><span>Года опыта</span></div>
-                    <div class="h-stat"><strong>24/7</strong><span>Поддержка</span></div>
-                    <div class="h-stat"><strong>100%</strong><span>Качество</span></div>
-                    <div class="h-stat"><strong>5+</strong><span>Кейсов</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">ОСНОВАТЕЛЬ</span>
-                <h2>Кто стоит за кодом?</h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-text" data-aos="fade-right">
-                    <p>
-                        Привет! Я Хасан. Студент первого курса ТГУ (Худжанд), специальность "Веб-дизайн и компьютерная графика".
-                        Моя база — город Истаравшан.
-                    </p>
-                    <p>
-                        Моя философия проста: <strong>"Дисциплина бьет класс"</strong>. Я не верю в быстрое везение. 
-                        Я верю в ежедневный труд, чистый код и архитектурную точность.
-                    </p>
-                    <p>
-                        Помимо веба, я изучаю физику, архитектуру и пишу "Анти-книгу" для мотивации молодежи. 
-                        В 2025 году я запускаю проект <strong>Digital Tajikistan</strong> с поддержкой Google AI.
-                    </p>
-                    <a href="Резюме - Хасан (Hasan Group).pdf" class="btn btn-outline" style="margin-top: 20px;">Скачать Резюме (PDF)</a>
-                </div>
-                <div class="about-img" data-aos="fade-left">
-    <img src="me.png" alt="Hasan Profile" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);">
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+  <div class="hero-tag"><div class="live-dot"></div><span data-i18n="hero_tag">Доступен для проектов</span> · <span id="current-date">...</span></div>
+  <h1 data-i18n="hero_h1_pre">Архитектура Вашего<br>
+    <span class="glitch" data-text="Цифрового">
+      <span class="tw-wrap"><span id="tw"></span><span class="tw-cur"></span></span>
+    </span>
+    <span class="hl" data-i18n="hero_h1_suf"> Будущего</span>
+  </h1>
+  <p data-i18n="hero_desc">Hasan Group — слияние веб-технологий, инженерного подхода и философии Кайдзен. Создаём сайты, софт и дизайн-системы из Истаравшана для всего мира.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-primary" data-i18n="hero_btn1">Смотреть проекты <i class="fas fa-arrow-right"></i></a>
+    <a href="#about" class="btn btn-outline" data-i18n="hero_btn2">Читать историю</a>
+  </div>
+  <div class="hero-stats">
+    <div class="h-stat"><strong>3+</strong><span data-i18n="stat_exp">Года опыта</span></div>
+    <div class="h-stat"><strong>24/7</strong><span data-i18n="stat_support">Поддержка</span></div>
+    <div class="h-stat"><strong>100%</strong><span data-i18n="stat_quality">Качество</span></div>
+    <div class="h-stat"><strong>5+</strong><span data-i18n="stat_cases">Кейсов</span></div>
+  </div>
 </div>
-            </div>
-        </div>
-    </section>
+</div>
+</section>
 
-    <section id="services" class="section">
-        <div class="container">
-            <div class="section-header" style="text-align: center;">
-                <span class="section-tag">ЭКОСИСТЕМА УСЛУГ</span>
-                <h2>Что я могу предложить</h2>
-            </div>
-            <div class="services-grid">
-                <div class="srv-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-code srv-icon"></i>
-                    <h3>Web Development</h3>
-                    <p>Полный цикл создания сайтов. От прототипа до хостинга.</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Корпоративные сайты</li>
-                        <li><i class="fas fa-check"></i> Landing Page</li>
-                        <li><i class="fas fa-check"></i> GitHub Pages</li>
-                    </ul>
-                </div>
-                <div class="srv-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-cube srv-icon"></i>
-                    <h3>Arch & 3D</h3>
-                    <p>Визуализация объектов и архитектурных форм.</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 3D Моделирование</li>
-                        <li><i class="fas fa-check"></i> Рендеринг сцен</li>
-                        <li><i class="fas fa-check"></i> Инженерные чертежи</li>
-                    </ul>
-                </div>
-                <div class="srv-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-robot srv-icon"></i>
-                    <h3>Python & Soft</h3>
-                    <p>Автоматизация рутины и создание инструментов.</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Telegram Боты</li>
-                        <li><i class="fas fa-check"></i> Парсинг данных (JSON)</li>
-                        <li><i class="fas fa-check"></i> Visual Basic Apps</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<section class="section" style="padding: 80px 0; background: #0f1014;">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 50px;">
-                <span class="section-tag">ИНСТРУМЕНТАРИЙ</span>
-                <h2>Мой Технический Арсенал</h2>
-                <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">
-                    Я не ограничиваюсь вебом. Мой стек позволяет решать задачи в архитектуре, 
-                    разработке десктопного софта и автоматизации.
-                </p>
-            </div>
-            
-            <div class="stack-grid" data-aos="fade-up" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
-                
-                <div class="stack-item">
-                    <i class="fab fa-html5" style="color: #e34c26;"></i>
-                    <span>HTML5 / CSS3</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Frontend Base</small>
-                </div>
-                <div class="stack-item">
-                    <i class="fab fa-js" style="color: #f0db4f;"></i>
-                    <span>JavaScript</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Interactivity</small>
-                </div>
-
-                <div class="stack-item" style="border-color: rgba(255, 212, 59, 0.2);">
-                    <i class="fab fa-python" style="color: #ffd43b;"></i>
-                    <span>Python</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Automation & AI</small>
-                </div>
-                
-                <div class="stack-item">
-                    <i class="fab fa-windows" style="color: #00a4ef;"></i>
-                    <span>Visual Basic</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Desktop Apps</small>
-                </div>
-
-                <div class="stack-item">
-                    <i class="fas fa-cube" style="color: #ff9f1c;"></i>
-                    <span>Blender 3D</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Modeling</small>
-                </div>
-
-                <div class="stack-item">
-                    <i class="fab fa-figma" style="color: #f24e1e;"></i>
-                    <span>Figma</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">UI/UX Design</small>
-                </div>
-
-                <div class="stack-item">
-                    <i class="fas fa-database" style="color: #fff;"></i>
-                    <span>JSON / Data</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Parsing</small>
-                </div>
-
-                <div class="stack-item">
-                    <i class="fab fa-github" style="color: #fff;"></i>
-                    <span>Git / GitHub</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Version Control</small>
-                </div>
-
-                <div class="stack-item">
-                    <i class="fas fa-user-secret" style="color: #10b981;"></i>
-                    <span>CyberSec</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Basic Audit</small>
-                </div>
-
-                <div class="stack-item">
-                    <i class="fab fa-linux" style="color: #fff;"></i>
-                    <span>Linux / Kali</span>
-                    <small style="display:block; font-size:10px; color:#555; margin-top:5px;">Environment</small>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <section id="projects" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">ПОРТФОЛИО</span>
-                <h2>Избранные Кейсы</h2>
-            </div>
-            
-            <div class="project-row" data-aos="fade-up">
-                <div class="project-preview">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" alt="NGO">
-                </div>
-                <div class="project-info">
-                    <div class="tech-tags">
-                        <span class="tag">WEB DEV</span>
-                        <span class="tag">DESIGN</span>
-                    </div>
-                    <h3>ОО «Чашмаи Хаёт»</h3>
-                    <p>
-                        Крупный проект для НПО. Разработана структура сайта, внедрена форма обратной связи, 
-                        создана галерея проектов. Сайт помог организации подать заявку на международные гранты.
-                    </p>
-                    <div class="btn btn-outline" style="cursor: default; opacity: 0.6; border-style: dashed;">
-                    <i class="fas fa-clock"></i> Скоро / In Progress
-                </div>
-            </div>
-
-            <div class="project-row reverse" data-aos="fade-up">
-                <div class="project-preview">
-                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800" alt="Python">
-                </div>
-                <div class="project-info">
-                    <div class="tech-tags">
-                        <span class="tag">PYTHON</span>
-                        <span class="tag">SECURITY</span>
-                    </div>
-                    <h3>Security Scripts Pack</h3>
-                    <p>
-                        Набор авторских инструментов для автоматизации проверки безопасности (Bug Bounty) 
-                        и работы с данными. Включает конвертер медицинских статей в JSON.
-                    </p>
-                    <div class="btn btn-outline" style="cursor: default; opacity: 0.6; border-style: dashed;">
-                    <i class="fas fa-clock"></i> Скоро / In Progress
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-row" data-aos="fade-up">
-                <div class="project-preview">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="AI">
-                </div>
-                <div class="project-info">
-                    <div class="tech-tags">
-                        <span class="tag">AI</span>
-                        <span class="tag">STARTUP</span>
-                    </div>
-                    <h3>Digital Tajikistan</h3>
-                    <p>
-                        Концепция образовательной платформы на базе ИИ. 
-                        Проект разрабатывается для конкурса «Илм фуруги марифат» и гранта Google AI Futures Fund.
-                    </p>
-                    <div class="btn btn-outline" style="cursor: default; opacity: 0.6; border-style: dashed;">
-                    <i class="fas fa-clock"></i> Скоро / In Progress
-                    </div>
-                </div>
-            </div>
-<div class="project-row reverse" data-aos="fade-up">
-    
-    <div class="project-preview" style="position: relative; background: #000;">
-        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" 
-             style="width: 100%; height: 100%; object-fit: cover; filter: blur(15px) brightness(0.4);">
-        
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-                    border: 1px solid rgba(255,255,255,0.2); padding: 15px 30px; 
-                    border-radius: 50px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px);">
-            <span style="color: var(--primary); font-weight: 800; letter-spacing: 3px; font-size: 16px;">COMING SOON</span>
-        </div>
+<!-- ABOUT -->
+<section id="about" class="section">
+<div class="container">
+  <div class="sec-head" data-aos="fade-up">
+    <span class="sec-tag" data-i18n="about_tag">ОСНОВАТЕЛЬ</span>
+    <h2 data-i18n="about_h2">Кто стоит за кодом?</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text" data-aos="fade-right">
+      <p data-i18n="about_p1">Привет! Я Хасан. Студент первого курса ТГУ (Худжанд), специальность «Веб-дизайн и компьютерная графика». Моя база — город Истаравшан.</p>
+      <p data-i18n="about_p2">Моя философия: <strong>«Дисциплина бьёт класс»</strong>. Я верю в ежедневный труд, чистый код и архитектурную точность.</p>
+      <p data-i18n="about_p3">Помимо веба, изучаю физику и архитектуру, пишу «Анти-книгу» для мотивации молодёжи. В 2025 году запускаю проект <strong>Digital Tajikistan</strong> с поддержкой Google AI.</p>
+      <a href="Резюме - Хасан (Hasan Group).pdf" class="btn btn-outline" style="margin-top:22px;" data-i18n="about_cv">Скачать Резюме <i class="fas fa-file-pdf"></i></a>
     </div>
+    <div class="about-img" data-aos="fade-left">
+      <img src="me.png" alt="Hasan Profile">
+    </div>
+  </div>
+</div>
+</section>
 
+<!-- SERVICES -->
+<section id="services" class="section">
+<div class="container">
+  <div class="sec-head" style="text-align:center;" data-aos="fade-up">
+    <span class="sec-tag" data-i18n="srv_tag">ЭКОСИСТЕМА УСЛУГ</span>
+    <h2 data-i18n="srv_h2">Что я могу предложить</h2>
+    <div class="sec-divider" style="margin:16px auto 0;"></div>
+  </div>
+  <div class="services-grid">
+    <div class="srv-card" data-aos="fade-up" data-aos-delay="80">
+      <i class="fas fa-code srv-icon"></i>
+      <h3 data-i18n="s1_h">Web Development</h3>
+      <p data-i18n="s1_p">Полный цикл создания сайтов. От прототипа до хостинга.</p>
+      <ul><li><i class="fas fa-check"></i><span data-i18n="s1_l1">Корпоративные сайты</span></li><li><i class="fas fa-check"></i><span data-i18n="s1_l2">Landing Page</span></li><li><i class="fas fa-check"></i><span data-i18n="s1_l3">GitHub Pages</span></li></ul>
+    </div>
+    <div class="srv-card" data-aos="fade-up" data-aos-delay="180">
+      <i class="fas fa-cube srv-icon"></i>
+      <h3 data-i18n="s2_h">Arch & 3D</h3>
+      <p data-i18n="s2_p">Визуализация объектов и архитектурных форм.</p>
+      <ul><li><i class="fas fa-check"></i><span data-i18n="s2_l1">3D Моделирование</span></li><li><i class="fas fa-check"></i><span data-i18n="s2_l2">Рендеринг сцен</span></li><li><i class="fas fa-check"></i><span data-i18n="s2_l3">Инженерные чертежи</span></li></ul>
+    </div>
+    <div class="srv-card" data-aos="fade-up" data-aos-delay="280">
+      <i class="fas fa-robot srv-icon"></i>
+      <h3 data-i18n="s3_h">Python & Soft</h3>
+      <p data-i18n="s3_p">Автоматизация рутины и создание инструментов.</p>
+      <ul><li><i class="fas fa-check"></i><span data-i18n="s3_l1">Telegram Боты</span></li><li><i class="fas fa-check"></i><span data-i18n="s3_l2">Парсинг данных</span></li><li><i class="fas fa-check"></i><span data-i18n="s3_l3">Visual Basic Apps</span></li></ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- STACK -->
+<section class="section" style="background:var(--surface);">
+<div class="container">
+  <div class="sec-head" style="text-align:center;margin-bottom:48px;" data-aos="fade-up">
+    <span class="sec-tag" data-i18n="stack_tag">ИНСТРУМЕНТАРИЙ</span>
+    <h2 data-i18n="stack_h2">Технический Арсенал</h2>
+  </div>
+  <div class="stack-grid" data-aos="fade-up">
+    <div class="stack-item"><i class="fab fa-html5" style="color:#e34c26;"></i><span>HTML5 / CSS3</span><small>Frontend Base</small></div>
+    <div class="stack-item"><i class="fab fa-js" style="color:#f0db4f;"></i><span>JavaScript</span><small>Interactivity</small></div>
+    <div class="stack-item"><i class="fab fa-python" style="color:#ffd43b;"></i><span>Python</span><small>Automation & AI</small></div>
+    <div class="stack-item"><i class="fab fa-windows" style="color:#00a4ef;"></i><span>Visual Basic</span><small>Desktop Apps</small></div>
+    <div class="stack-item"><i class="fas fa-cube" style="color:#ff9f1c;"></i><span>Blender 3D</span><small>Modeling</small></div>
+    <div class="stack-item"><i class="fab fa-figma" style="color:#f24e1e;"></i><span>Figma</span><small>UI/UX Design</small></div>
+    <div class="stack-item"><i class="fas fa-database"></i><span>JSON / Data</span><small>Parsing</small></div>
+    <div class="stack-item"><i class="fab fa-github"></i><span>Git / GitHub</span><small>Version Control</small></div>
+    <div class="stack-item"><i class="fas fa-user-secret" style="color:#10b981;"></i><span>CyberSec</span><small>Basic Audit</small></div>
+    <div class="stack-item"><i class="fab fa-linux"></i><span>Linux / Kali</span><small>Environment</small></div>
+  </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+<div class="container">
+  <div class="sec-head" data-aos="fade-up">
+    <span class="sec-tag" data-i18n="proj_tag">ПОРТФОЛИО</span>
+    <h2 data-i18n="proj_h2">Избранные Кейсы</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="project-row" data-aos="fade-up">
+    <div class="project-preview"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" alt="NGO"></div>
     <div class="project-info">
-        <div class="tech-tags">
-            <span class="tag" style="background: rgba(255,255,255,0.1);">CONFIDENTIAL</span>
-            <span class="tag" style="background: rgba(255,255,255,0.1);">STARTUP</span>
-        </div>
-        <h3 style="color: var(--text-gray);">Секретный Проект</h3>
-        <p>
-            Мы готовим что-то масштабное для рынка Таджикистана. 
-            Новая платформа, которая объединит архитектуру и искусственный интеллект. 
-            Релиз запланирован на 2026 год.
-        </p>
-        <span style="color: var(--primary); font-size: 14px; font-weight: 600;">
-            <i class="fas fa-hourglass-half"></i> Анонс через 2 месяца
-        </span>
+      <div class="tech-tags"><span class="tag">WEB DEV</span><span class="tag">DESIGN</span></div>
+      <h3>ОО «Чашмаи Хаёт»</h3>
+      <p data-i18n="proj1_desc">Крупный проект для НПО. Разработана структура сайта, форма обратной связи, галерея проектов. Сайт помог подать заявку на международные гранты.</p>
+      <div class="btn btn-outline" style="cursor:default;opacity:.5;border-style:dashed;"><i class="fas fa-clock"></i> In Progress</div>
     </div>
-</div>
-        </div>
-    </section>
-
-    <section id="pricing" class="section" style="background: #0f1014;">
-        <div class="container">
-            <div class="section-header" style="text-align: center;">
-                <span class="section-tag">СТОИМОСТЬ</span>
-                <h2>Пакеты Услуг</h2>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-card" data-aos="zoom-in">
-                    <h3>Landing Page</h3>
-                    <div class="price">150$ <span>/ проект</span></div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Одностраничный сайт</li>
-                        <li><i class="fas fa-check"></i> Адаптив под мобильные</li>
-                        <li><i class="fas fa-check"></i> Хостинг GitHub</li>
-                        <li><i class="fas fa-check"></i> 5 дней разработки</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Выбрать</a>
-                </div>
-                <div class="price-card featured" data-aos="zoom-in" data-aos-delay="100">
-                    <h3>Corporate</h3>
-                    <div class="price">400$ <span>/ проект</span></div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Многостраничный сайт</li>
-                        <li><i class="fas fa-check"></i> Формы и Интеграции</li>
-                        <li><i class="fas fa-check"></i> SEO Оптимизация</li>
-                        <li><i class="fas fa-check"></i> 2 недели поддержки</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Выбрать</a>
-                </div>
-                <div class="price-card" data-aos="zoom-in" data-aos-delay="200">
-                    <h3>Custom / Soft</h3>
-                    <div class="price">Discuss <span>/ договорная</span></div>
-                    <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Скрипты Python / VB</li>
-                        <li><i class="fas fa-check"></i> 3D Моделирование</li>
-                        <li><i class="fas fa-check"></i> Сложные системы</li>
-                        <li><i class="fas fa-check"></i> Индивидуальный план</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Обсудить</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">БАЗА ЗНАНИЙ</span>
-                <h2>Реальные Кейсы</h2>
-            </div>
-            <div class="blog-grid">
-                
-                <div class="blog-card" data-aos="fade-up">
-                    <div class="blog-img">
-                        <img src="image_249b9c.jpg" alt="NGO Case">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">DEC 10, 2025</span>
-                            <span class="blog-tag">#WEB_DEV</span>
-                        </div>
-                        <h3>Цифровизация НПО: Как сайт помог выиграть международный грант</h3>
-                        <a href="#" class="blog-link">Читать разбор <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-img">
-                        <img src="image_26e8dc.jpg" alt="Security Audit">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">DEC 05, 2025</span>
-                            <span class="blog-tag">#SECURITY</span>
-                        </div>
-                        <h3>Bug Bounty и Аудит: Почему безопасность сайта важнее дизайна</h3>
-                        <a href="#" class="blog-link">Читать статью <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-img">
-                        <img src="image_24fd77.jpg" alt="Python Code">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">NOV 28, 2025</span>
-                            <span class="blog-tag">#AUTOMATION</span>
-                        </div>
-                        <h3>Python для Архитектора: Автоматизация рутины и парсинг данных</h3>
-                        <a href="#" class="blog-link">Смотреть код <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="contact-box" data-aos="zoom-in">
-                <h2>Готовы начать?</h2>
-                <p style="color: var(--text-gray); margin-bottom: 40px;">
-                    Опишите вашу задачу, и я предложу лучшее техническое решение.
-                </p>
-                
-                <form action="https://formspree.io/f/mwpgrvdy" method="POST" class="contact-form">
-                    <input type="text" name="name" class="input-field" placeholder="Ваше Имя" required>
-                    <input type="email" name="email" class="input-field" placeholder="Ваш Email" required>
-                    <textarea name="message" class="input-field full-width" rows="5" placeholder="Опишите проект..." required></textarea>
-                    <button type="submit" class="btn btn-primary full-width" style="justify-content: center; padding: 15px;">Отправить заявку</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo" style="margin-bottom: 20px;">HASAN GROUP</div>
-                    <p style="color: var(--text-gray); margin-bottom: 20px;">
-                        Создаем цифровые продукты с душой и инженерной точностью.
-                    </p>
-                    <div class="socials">
-                        <a href="https://www.instagram.com/abdulloev.2oo7_/?__pwa=1#" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                        <a href="https://t.me/Abdulloevhasan" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
-                        <a href="https://wa.me/992023192727" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Навигация</h4>
-                    <ul class="footer-links" style="list-style: none; margin-top: 20px; color: var(--text-gray);">
-                        <li style="margin-bottom: 10px;"><a href="#about" style="color: inherit;">Обо мне</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#services" style="color: inherit;">Услуги</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#projects" style="color: inherit;">Портфолио</a></li>
-                        <li style="margin-bottom: 10px;"><a href="#blog" style="color: inherit;">Блог</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Контакты</h4>
-                    <ul style="list-style: none; margin-top: 20px; color: var(--text-gray);">
-                        <li style="margin-bottom: 15px;"><i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> Истаравшан / Худжанд</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-phone" style="color: var(--primary);"></i> +992 02 319 27 27</li>
-                        <li style="margin-bottom: 15px;"><i class="fas fa-envelope" style="color: var(--primary);"></i> abdulloevhasan965@gmail.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom" style="text-align: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); color: #555; font-size: 12px; display: flex; flex-direction: column; gap: 10px;">
-    <div>© 2025 Hasan Group. All rights reserved.</div>
-    <div style="display: flex; justify-content: center; gap: 20px;">
-        <a href="policy.html" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#4cc9f0'" onmouseout="this.style.color='#94a3b8'">Политика конфиденциальности</a>
-        <a href="terms.html" style="color: var(--text-gray); text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='#4cc9f0'" onmouseout="this.style.color='#94a3b8'">Пользовательское соглашение</a>
+  </div>
+  <div class="project-row reverse" data-aos="fade-up">
+    <div class="project-preview"><img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800" alt="Python"></div>
+    <div class="project-info">
+      <div class="tech-tags"><span class="tag">PYTHON</span><span class="tag">SECURITY</span></div>
+      <h3>Security Scripts Pack</h3>
+      <p data-i18n="proj2_desc">Набор авторских инструментов для автоматизации Bug Bounty и работы с данными. Включает конвертер медицинских статей в JSON.</p>
+      <div class="btn btn-outline" style="cursor:default;opacity:.5;border-style:dashed;"><i class="fas fa-clock"></i> In Progress</div>
     </div>
-</div>
+  </div>
+  <div class="project-row" data-aos="fade-up">
+    <div class="project-preview"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="AI"></div>
+    <div class="project-info">
+      <div class="tech-tags"><span class="tag">AI</span><span class="tag">STARTUP</span></div>
+      <h3>Digital Tajikistan</h3>
+      <p data-i18n="proj3_desc">Образовательная платформа на базе ИИ. Разрабатывается для конкурса «Илм фуруги марифат» и гранта Google AI Futures Fund.</p>
+      <div class="btn btn-outline" style="cursor:default;opacity:.5;border-style:dashed;"><i class="fas fa-clock"></i> In Progress</div>
+    </div>
+  </div>
+  <div class="project-row reverse" data-aos="fade-up">
+    <div class="project-preview" style="background:#000;">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" style="filter:blur(14px) brightness(.35);" alt="Secret">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <div style="border:1px solid rgba(255,255,255,.18);padding:13px 28px;border-radius:50px;background:rgba(0,0,0,.5);backdrop-filter:blur(5px);">
+          <span style="color:var(--primary);font-weight:900;letter-spacing:3px;font-size:15px;">COMING SOON</span>
         </div>
-    </footer>
+      </div>
+    </div>
+    <div class="project-info">
+      <div class="tech-tags"><span class="tag">CONFIDENTIAL</span><span class="tag">STARTUP</span></div>
+      <h3 style="color:var(--text-gray);" data-i18n="proj4_h">Секретный Проект</h3>
+      <p data-i18n="proj4_desc">Масштабная платформа для рынка Таджикистана, которая объединит архитектуру и искусственный интеллект. Релиз в 2026 году.</p>
+      <span style="color:var(--primary);font-size:14px;font-weight:700;" data-i18n="proj4_soon"><i class="fas fa-hourglass-half"></i> Анонс через 2 месяца</span>
+    </div>
+  </div>
+</div>
+</section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    <script>
-    // Мобильное меню
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav-menu');
-    const links = document.querySelectorAll('.nav-link');
+<!-- PRICING -->
+<section id="pricing" class="section" style="background:var(--surface);">
+<div class="container">
+  <div class="sec-head" style="text-align:center;" data-aos="fade-up">
+    <span class="sec-tag" data-i18n="price_tag">СТОИМОСТЬ</span>
+    <h2 data-i18n="price_h2">Пакеты Услуг</h2>
+    <div class="sec-divider" style="margin:16px auto 0;"></div>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card" data-aos="zoom-in" data-aos-delay="0">
+      <h3 data-i18n="p1_h">Landing Page</h3>
+      <div class="price">150$ <span data-i18n="per_proj">/ проект</span></div>
+      <ul class="price-features">
+        <li><i class="fas fa-check"></i><span data-i18n="p1_f1">Одностраничный сайт</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p1_f2">Адаптив под мобильные</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p1_f3">Хостинг GitHub</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p1_f4">5 дней разработки</span></li>
+      </ul>
+      <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;" data-i18n="btn_choose">Выбрать</a>
+    </div>
+    <div class="price-card featured" data-aos="zoom-in" data-aos-delay="100">
+      <h3 data-i18n="p2_h">Corporate</h3>
+      <div class="price">400$ <span data-i18n="per_proj">/ проект</span></div>
+      <ul class="price-features">
+        <li><i class="fas fa-check"></i><span data-i18n="p2_f1">Многостраничный сайт</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p2_f2">Формы и Интеграции</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p2_f3">SEO Оптимизация</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p2_f4">2 недели поддержки</span></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;" data-i18n="btn_choose">Выбрать</a>
+    </div>
+    <div class="price-card" data-aos="zoom-in" data-aos-delay="200">
+      <h3 data-i18n="p3_h">Custom / Soft</h3>
+      <div class="price">Discuss <span data-i18n="per_deal">/ договор</span></div>
+      <ul class="price-features">
+        <li><i class="fas fa-check"></i><span data-i18n="p3_f1">Скрипты Python / VB</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p3_f2">3D Моделирование</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p3_f3">Сложные системы</span></li>
+        <li><i class="fas fa-check"></i><span data-i18n="p3_f4">Индивидуальный план</span></li>
+      </ul>
+      <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;" data-i18n="btn_discuss">Обсудить</a>
+    </div>
+  </div>
+</div>
+</section>
 
-    // Клик по гамбургеру
-    toggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        toggle.querySelector('i').classList.toggle('fa-times'); // Меняет иконку на крестик
-        toggle.querySelector('i').classList.toggle('fa-bars');
-    });
+<!-- QUIZ -->
+<section id="quiz" class="section">
+<div class="container">
+  <div class="sec-head" style="text-align:center;" data-aos="fade-up">
+    <span class="sec-tag" data-i18n="quiz_tag">ТЕСТ</span>
+    <h2 data-i18n="quiz_h2">Проверь свои знания</h2>
+    <p style="color:var(--text-gray);max-width:500px;margin:14px auto 0;font-size:16px;" data-i18n="quiz_sub">10 вопросов о веб-разработке, IT и Hasan Group</p>
+  </div>
+  <div class="quiz-shell" data-aos="fade-up">
+    <svg width="0" height="0"><defs><linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#4cc9f0"/><stop offset="100%" stop-color="#4361ee"/></linearGradient></defs></svg>
+    <div id="quizBody">
+      <div class="quiz-prog-wrap">
+        <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="quizProg" style="width:0%"></div></div>
+        <div class="quiz-prog-label"><span id="quizProgText">Вопрос 1 из 10</span><span id="quizScoreTrack">✓ 0 · ✗ 0</span></div>
+      </div>
+      <div class="quiz-q-num" id="quizCat">КАТЕГОРИЯ</div>
+      <div class="quiz-question" id="quizQ"></div>
+      <div class="quiz-options" id="quizOpts"></div>
+      <div class="quiz-feedback" id="quizFB"></div>
+      <div class="quiz-nav">
+        <button class="btn btn-primary" id="quizNext" onclick="nextQ()" style="display:none;">Далее <i class="fas fa-arrow-right"></i></button>
+        <div class="quiz-score-badge" id="quizBadge"></div>
+      </div>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <h3 data-i18n="quiz_result">Твой результат</h3>
+      <div class="score-ring-wrap">
+        <svg viewBox="0 0 160 160" width="160" height="160">
+          <circle class="score-ring-bg" cx="80" cy="80" r="65"/>
+          <circle class="score-ring-fill" id="scoreCircle" cx="80" cy="80" r="65" stroke-dasharray="408.41" stroke-dashoffset="408.41"/>
+        </svg>
+        <div class="score-num"><div class="score-big" id="scoreBig">0</div><div class="score-sub">из 10</div></div>
+      </div>
+      <p id="scoreMsg" style="color:var(--primary);font-size:20px;font-weight:800;margin-bottom:22px;"></p>
+      <div class="quiz-cat-grid" id="catBreakdown"></div>
+      <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top:10px;" data-i18n="quiz_retry">Пройти снова <i class="fas fa-redo"></i></button>
+    </div>
+  </div>
+</div>
+</section>
 
-    // Закрыть меню, когда нажали на ссылку
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            toggle.querySelector('i').classList.remove('fa-times');
-            toggle.querySelector('i').classList.add('fa-bars');
-        });
-    });
-</script>
+<!-- CALENDAR -->
+<section id="calendar" class="section" style="background:var(--surface);">
+<div class="container">
+  <div class="sec-head" data-aos="fade-up">
+    <span class="sec-tag" data-i18n="cal_tag">ПЛАНИРОВЩИК</span>
+    <h2 data-i18n="cal_h2">Календарь</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:start;" data-aos="fade-up" id="calGrid">
+    <div class="calendar-wrap">
+      <div class="cal-header">
+        <button class="cal-nav" onclick="calNav(-1)"><i class="fas fa-chevron-left"></i></button>
+        <h3 id="calTitle">...</h3>
+        <button class="cal-nav" onclick="calNav(1)"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="cal-dow">
+        <span data-i18n="mon">Пн</span><span data-i18n="tue">Вт</span><span data-i18n="wed">Ср</span><span data-i18n="thu">Чт</span><span data-i18n="fri">Пт</span><span data-i18n="sat">Сб</span><span data-i18n="sun">Вс</span>
+      </div>
+      <div class="cal-days" id="calDays"></div>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;font-size:12px;color:var(--text-gray);flex-wrap:wrap;">
+        <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:var(--grad);display:inline-block;"></span><span data-i18n="today">Сегодня</span></span>
+        <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:50%;background:var(--primary);display:inline-block;"></span><span data-i18n="event">Событие</span></span>
+        <span style="display:flex;align-items:center;gap:5px;"><span style="font-size:14px;">🎉</span><span data-i18n="holiday">Праздник</span></span>
+      </div>
+    </div>
+    <div>
+      <div style="margin-bottom:20px;">
+        <h4 style="margin-bottom:16px;font-size:17px;" data-i18n="add_event">Добавить событие</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <input id="evtTitle" class="input-field" placeholder="Название события" data-i18n-placeholder="evt_placeholder">
+          <input id="evtDate" class="input-field" type="date" style="padding:14px 16px;">
+          <select id="evtColor" class="input-field" style="padding:14px 16px;">
+            <option value="#4cc9f0">🔵 Рабочее</option>
+            <option value="#4ade80">🟢 Личное</option>
+            <option value="#f87171">🔴 Срочное</option>
+            <option value="#fbbf24">🟡 Идея</option>
+          </select>
+          <button class="btn btn-primary" onclick="addEvent()" style="justify-content:center;" data-i18n="btn_add">Добавить <i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin-bottom:14px;font-size:17px;" data-i18n="events_title">События <span id="evtMonthLabel" style="color:var(--text-gray);font-size:13px;font-weight:600;"></span></h4>
+        <div id="evtList" style="display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+<div class="container">
+  <div class="contact-box" data-aos="zoom-in">
+    <h2 data-i18n="contact_h2">Готовы начать?</h2>
+    <p style="color:var(--text-gray);margin-top:12px;" data-i18n="contact_sub">Опишите задачу — предложу лучшее техническое решение.</p>
+    <form action="https://formspree.io/f/mwpgrvdy" method="POST" class="contact-form" id="contactForm">
+      <input type="text" name="name" class="input-field" data-i18n-placeholder="form_name" placeholder="Ваше Имя" required>
+      <input type="email" name="email" class="input-field" placeholder="Email" required>
+      <textarea name="message" class="input-field full-width" rows="5" data-i18n-placeholder="form_msg" placeholder="Опишите проект..." required></textarea>
+      <!-- FIX: honeypot field hidden via CSS, not style attr (avoids CSP issues) -->
+      <input type="text" name="_honeypot" id="honeypot" style="display:none;" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_timestamp" id="formTimestamp">
+      <button type="submit" class="btn btn-primary full-width" style="justify-content:center;padding:16px;" data-i18n="form_submit">Отправить заявку <i class="fas fa-paper-plane"></i></button>
+    </form>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo"><i class="fas fa-cube"></i> HASAN GROUP</div>
+      <p style="color:var(--text-gray);margin-bottom:18px;max-width:280px;font-size:15px;" data-i18n="footer_desc">Создаём цифровые продукты с душой и инженерной точностью.</p>
+      <div class="socials">
+        <!-- FIX: added target="_blank" to all social links -->
+        <a href="https://www.instagram.com/abdulloev.2oo7_/" rel="noopener noreferrer" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://t.me/Abdulloevhasan" rel="noopener noreferrer" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://wa.me/992023192727" rel="noopener noreferrer" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4 data-i18n="nav_label">Навигация</h4>
+      <ul>
+        <li><a href="#about" data-i18n="nav_about">Обо мне</a></li>
+        <li><a href="#services" data-i18n="nav_services">Услуги</a></li>
+        <li><a href="#projects" data-i18n="nav_projects">Портфолио</a></li>
+        <li><a href="#quiz" data-i18n="nav_quiz">Тест</a></li>
+        <li><a href="#calendar" data-i18n="nav_calendar">Календарь</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="contacts_label">Контакты</h4>
+      <ul>
+        <li><i class="fas fa-map-marker-alt" style="color:var(--primary);margin-right:8px;"></i>Истаравшан / Худжанд</li>
+        <li style="margin-top:10px;"><i class="fas fa-phone" style="color:var(--primary);margin-right:8px;"></i>+992 02 319 27 27</li>
+        <li style="margin-top:10px;"><i class="fas fa-envelope" style="color:var(--primary);margin-right:8px;"></i>abdulloevhasan965@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:52px;padding-top:20px;border-top:1px solid var(--border);color:#555;font-size:12px;display:flex;flex-direction:column;gap:10px;">
+    <!-- FIX: year is now set dynamically via JS -->
+    <div>© <span id="footYear"></span> Hasan Group. All rights reserved.</div>
+    <div style="display:flex;justify-content:center;gap:20px;">
+      <a href="policy.html" data-i18n="privacy">Политика конфиденциальности</a>
+      <a href="terms.html" data-i18n="terms">Пользовательское соглашение</a>
+    </div>
+  </div>
+</div>
+</footer>
+
+<!-- COOKIE -->
+<div id="cookie-banner" style="position:fixed;bottom:-300px;left:20px;right:20px;max-width:400px;background:rgba(19,20,26,.96);backdrop-filter:blur(20px);border:1px solid rgba(76,201,240,.25);padding:22px;border-radius:16px;z-index:10000;transition:bottom .6s cubic-bezier(.23,1,.32,1);display:flex;flex-direction:column;gap:14px;">
+  <div style="display:flex;align-items:start;gap:14px;">
+    <i class="fas fa-cookie" style="font-size:22px;color:var(--primary);margin-top:2px;"></i>
+    <div>
+      <h4 style="margin:0 0 5px;font-size:15px;">Cookies & Privacy</h4>
+      <p style="margin:0;font-size:13px;color:var(--text-gray);line-height:1.5;" data-i18n="cookie_text">Мы используем куки для улучшения UX. Подробнее — <a href="policy.html" style="color:var(--primary);">Политика</a>.</p>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:flex-end;">
+    <button onclick="acceptCookies()" style="padding:9px 22px;border-radius:6px;border:none;background:var(--primary);color:#000;font-weight:800;cursor:pointer;font-family:'Manrope',sans-serif;">ACCEPT</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.querySelector('.contact-form');
-        const btn = form.querySelector('button[type="submit"]');
-        const COOLDOWN = 60000; // 60 секунд (1 минута)
+// ====== SECURITY: Form honeypot + timestamp ======
+(function(){
+  const ts = document.getElementById('formTimestamp');
+  if(ts) ts.value = Date.now();
+})();
 
-        // 1. При загрузке страницы проверяем: не забанен ли пользователь?
-        checkCooldown();
+// ====== i18n TRANSLATIONS ======
+const LANGS = {
+  ru:{
+    nav_about:'Обо мне', nav_services:'Услуги', nav_projects:'Проекты',
+    nav_pricing:'Цены', nav_quiz:'Тест', nav_calendar:'Календарь',
+    nav_cta:'Начать проект', nav_label:'Навигация', contacts_label:'Контакты',
+    hero_tag:'Доступен для проектов',
+    hero_h1_pre:'Архитектура Вашего', hero_h1_suf:' Будущего',
+    hero_desc:'Hasan Group — слияние веб-технологий, инженерного подхода и философии Кайдзен. Создаём сайты, софт и дизайн-системы из Истаравшана для всего мира.',
+    hero_btn1:'Смотреть проекты', hero_btn2:'Читать историю',
+    stat_exp:'Года опыта', stat_support:'Поддержка', stat_quality:'Качество', stat_cases:'Кейсов',
+    about_tag:'ОСНОВАТЕЛЬ', about_h2:'Кто стоит за кодом?',
+    about_p1:'Привет! Я Хасан. Студент первого курса ТГУ (Худжанд), специальность «Веб-дизайн и компьютерная графика».',
+    about_p2:'Моя философия: <strong>«Дисциплина бьёт класс»</strong>.',
+    about_p3:'Изучаю физику и архитектуру, пишу «Анти-книгу», запускаю <strong>Digital Tajikistan</strong> с Google AI.',
+    about_cv:'Скачать Резюме',
+    srv_tag:'ЭКОСИСТЕМА УСЛУГ', srv_h2:'Что я могу предложить',
+    s1_h:'Web Development', s1_p:'Полный цикл создания сайтов. От прототипа до хостинга.',
+    s1_l1:'Корпоративные сайты', s1_l2:'Landing Page', s1_l3:'GitHub Pages',
+    s2_h:'Arch & 3D', s2_p:'Визуализация объектов и архитектурных форм.',
+    s2_l1:'3D Моделирование', s2_l2:'Рендеринг сцен', s2_l3:'Инженерные чертежи',
+    s3_h:'Python & Soft', s3_p:'Автоматизация рутины и создание инструментов.',
+    s3_l1:'Telegram Боты', s3_l2:'Парсинг данных', s3_l3:'Visual Basic Apps',
+    stack_tag:'ИНСТРУМЕНТАРИЙ', stack_h2:'Технический Арсенал',
+    proj_tag:'ПОРТФОЛИО', proj_h2:'Избранные Кейсы',
+    proj1_desc:'Крупный проект для НПО. Разработана структура сайта, форма обратной связи, галерея проектов.',
+    proj2_desc:'Набор авторских инструментов для автоматизации Bug Bounty и работы с данными.',
+    proj3_desc:'Образовательная платформа на базе ИИ. Разрабатывается для конкурса и гранта Google AI.',
+    proj4_h:'Секретный Проект', proj4_desc:'Масштабная платформа для рынка Таджикистана. Релиз в 2026 году.',
+    proj4_soon:'Анонс через 2 месяца',
+    price_tag:'СТОИМОСТЬ', price_h2:'Пакеты Услуг',
+    p1_h:'Landing Page', p2_h:'Corporate', p3_h:'Custom / Soft',
+    p1_f1:'Одностраничный сайт', p1_f2:'Адаптив под мобильные', p1_f3:'Хостинг GitHub', p1_f4:'5 дней разработки',
+    p2_f1:'Многостраничный сайт', p2_f2:'Формы и Интеграции', p2_f3:'SEO Оптимизация', p2_f4:'2 недели поддержки',
+    p3_f1:'Скрипты Python / VB', p3_f2:'3D Моделирование', p3_f3:'Сложные системы', p3_f4:'Индивидуальный план',
+    per_proj:'/ проект', per_deal:'/ договор',
+    btn_choose:'Выбрать', btn_discuss:'Обсудить', btn_add:'Добавить',
+    quiz_tag:'ТЕСТ', quiz_h2:'Проверь свои знания', quiz_sub:'10 вопросов о веб-разработке, IT и Hasan Group',
+    quiz_result:'Твой результат', quiz_retry:'Пройти снова',
+    cal_tag:'ПЛАНИРОВЩИК', cal_h2:'Календарь',
+    mon:'Пн', tue:'Вт', wed:'Ср', thu:'Чт', fri:'Пт', sat:'Сб', sun:'Вс',
+    today:'Сегодня', event:'Событие', holiday:'Праздник',
+    add_event:'Добавить событие', events_title:'События',
+    evt_placeholder:'Название события',
+    contact_h2:'Готовы начать?', contact_sub:'Опишите задачу — предложу лучшее решение.',
+    form_name:'Ваше Имя', form_msg:'Опишите проект...', form_submit:'Отправить заявку',
+    footer_desc:'Создаём цифровые продукты с душой и инженерной точностью.',
+    privacy:'Политика', terms:'Соглашение',
+    theme:'Тема', themeTitle:'Тема интерфейса',
+    countdown:'ОБРАТНЫЙ ОТСЧЁТ', days:'дней', hours:'ч', mins:'мин', secs:'сек',
+    cookie_text:'Мы используем куки для улучшения UX.',
+    welcome_sub:'Добро пожаловать! Как вас зовут?',
+    greet_morning:'Доброе утро', greet_day:'Добрый день', greet_evening:'Добрый вечер', greet_night:'Доброй ночи',
+    time_world:'Время в мире',
+    tour_t1:'🌍 Языки', tour_d1:'Смени язык сайта — выбери один из 5 языков здесь.',
+    tour_t2:'🎨 Темы', tour_d2:'Измени тему оформления — тёмная, светлая, кибер и другие.',
+    tour_t3:'🕐 Часовые пояса', tour_d3:'Нажми чтобы развернуть часы из 6 городов мира с флагами.',
+    tour_t4:'⏳ Обратный отсчёт', tour_d4:'До следующего праздника или события — здесь живёт счётчик.',
+    tour_t5:'🎉 Всё готово!', tour_d5:'Добро пожаловать на сайт Hasan Group. Изучайте, тестируйте, пишите нам!',
+    tour_next:'Далее →',
+    greet_return:'С возвращением в Hasan Group!', greet_welcome:'Добро пожаловать в Hasan Group!',
+  },
+  en:{
+    nav_about:'About', nav_services:'Services', nav_projects:'Projects',
+    nav_pricing:'Pricing', nav_quiz:'Quiz', nav_calendar:'Schedule',
+    nav_cta:'Start Project', nav_label:'Navigation', contacts_label:'Contacts',
+    hero_tag:'Available for projects',
+    hero_h1_pre:'Architecture of Your', hero_h1_suf:' Future',
+    hero_desc:'Hasan Group — a blend of web technologies, engineering mindset, and Kaizen philosophy. Building sites, software and design systems from Istaravshan for the world.',
+    hero_btn1:'View Projects', hero_btn2:'Read Story',
+    stat_exp:'Years Exp.', stat_support:'Support', stat_quality:'Quality', stat_cases:'Cases',
+    about_tag:'FOUNDER', about_h2:'Who is behind the code?',
+    about_p1:"Hi! I'm Hasan. First-year student at TSU (Khujand), Web Design & Computer Graphics.",
+    about_p2:'My philosophy: <strong>"Discipline beats talent"</strong>.',
+    about_p3:'Also studying physics and architecture, writing an "Anti-book", launching <strong>Digital Tajikistan</strong> with Google AI.',
+    about_cv:'Download CV',
+    srv_tag:'SERVICE ECOSYSTEM', srv_h2:'What I offer',
+    s1_h:'Web Development', s1_p:'Full cycle website creation. From prototype to hosting.',
+    s1_l1:'Corporate websites', s1_l2:'Landing Page', s1_l3:'GitHub Pages',
+    s2_h:'Arch & 3D', s2_p:'Visualization of objects and architectural forms.',
+    s2_l1:'3D Modeling', s2_l2:'Scene Rendering', s2_l3:'Engineering Drawings',
+    s3_h:'Python & Soft', s3_p:'Automation and tool creation.',
+    s3_l1:'Telegram Bots', s3_l2:'Data Parsing', s3_l3:'Visual Basic Apps',
+    stack_tag:'TOOLKIT', stack_h2:'Tech Arsenal',
+    proj_tag:'PORTFOLIO', proj_h2:'Featured Cases',
+    proj1_desc:'Large NGO project. Developed site structure, contact form, project gallery. Helped secure international grant applications.',
+    proj2_desc:'Custom tools for Bug Bounty automation and data processing. Includes medical article to JSON converter.',
+    proj3_desc:'AI-based educational platform. Developed for the Ilm competition and Google AI Futures Fund grant.',
+    proj4_h:'Secret Project', proj4_desc:'Massive platform for Tajikistan market combining architecture and AI. Release 2026.',
+    proj4_soon:'Announcement in 2 months',
+    price_tag:'PRICING', price_h2:'Service Packages',
+    p1_h:'Landing Page', p2_h:'Corporate', p3_h:'Custom / Soft',
+    p1_f1:'Single-page site', p1_f2:'Mobile responsive', p1_f3:'GitHub Hosting', p1_f4:'5 days development',
+    p2_f1:'Multi-page site', p2_f2:'Forms & Integrations', p2_f3:'SEO Optimization', p2_f4:'2 weeks support',
+    p3_f1:'Python / VB Scripts', p3_f2:'3D Modeling', p3_f3:'Complex Systems', p3_f4:'Individual plan',
+    per_proj:'/ project', per_deal:'/ contract',
+    btn_choose:'Choose', btn_discuss:'Discuss', btn_add:'Add',
+    quiz_tag:'QUIZ', quiz_h2:'Test Your Knowledge', quiz_sub:'10 questions about web dev, IT and Hasan Group',
+    quiz_result:'Your Result', quiz_retry:'Retry',
+    cal_tag:'PLANNER', cal_h2:'Calendar',
+    mon:'Mo', tue:'Tu', wed:'We', thu:'Th', fri:'Fr', sat:'Sa', sun:'Su',
+    today:'Today', event:'Event', holiday:'Holiday',
+    add_event:'Add Event', events_title:'Events',
+    evt_placeholder:'Event name',
+    contact_h2:'Ready to start?', contact_sub:'Describe your task — I\'ll suggest the best technical solution.',
+    form_name:'Your Name', form_msg:'Describe your project...', form_submit:'Send Request',
+    footer_desc:'Building digital products with soul and engineering precision.',
+    privacy:'Privacy Policy', terms:'Terms of Service',
+    theme:'Theme', themeTitle:'Interface Theme',
+    countdown:'COUNTDOWN', days:'days', hours:'h', mins:'min', secs:'sec',
+    cookie_text:'We use cookies to improve UX.',
+    welcome_sub:'Welcome! What is your name?',
+    greet_morning:'Good morning', greet_day:'Good afternoon', greet_evening:'Good evening', greet_night:'Good night',
+    time_world:'World Time',
+    tour_t1:'🌍 Languages', tour_d1:'Change the site language — choose one of 5 languages here.',
+    tour_t2:'🎨 Themes', tour_d2:'Change the design theme — dark, light, cyber and more.',
+    tour_t3:'🕐 Time Zones', tour_d3:'Click to expand clocks from 6 world cities with flags.',
+    tour_t4:'⏳ Countdown', tour_d4:'Counts down to the next holiday or event.',
+    tour_t5:'🎉 All set!', tour_d5:'Welcome to Hasan Group. Explore, test, contact us!',
+    tour_next:'Next →',
+    greet_return:'Welcome back to Hasan Group!', greet_welcome:'Welcome to Hasan Group!',
+  },
+  tg:{
+    nav_about:'Дар бораи ман', nav_services:'Хизматҳо', nav_projects:'Лоиҳаҳо',
+    nav_pricing:'Нархҳо', nav_quiz:'Санҷиш', nav_calendar:'Тақвим',
+    nav_cta:'Оғози лоиҳа', nav_label:'Навигатсия', contacts_label:'Тамосҳо',
+    hero_tag:'Барои лоиҳаҳо дастрас',
+    hero_h1_pre:'Меъмории', hero_h1_suf:' Оянда',
+    hero_desc:'Hasan Group — омезиши технологияҳои веб, равиши муҳандисӣ ва фалсафаи Кайзен.',
+    hero_btn1:'Лоиҳаҳоро бинед', hero_btn2:'Таърихро хонед',
+    stat_exp:'Солҳои таҷриба', stat_support:'Дастгирӣ', stat_quality:'Сифат', stat_cases:'Кейсҳо',
+    about_tag:'АСОСГУЗОР', about_h2:'Паси код кист?',
+    about_p1:'Салом! Ман Ҳасан ҳастам. Донишҷӯи соли аввали ДДТ (Хуҷанд).',
+    about_p2:'Фалсафаи ман: <strong>«Интизом аз истеъдод бартар аст»</strong>.',
+    about_p3:'Физика ва меъморӣ меомӯзам, «Зидди китоб» менависам, <strong>Digital Tajikistan</strong> бо Google AI.',
+    about_cv:'Резюме зеркашӣ',
+    srv_tag:'ЭКОСИСТЕМАИ ХИЗМАТҲО', srv_h2:'Ман чӣ пешкаш карда метавонам',
+    s1_h:'Web Development', s1_p:'Сохтани сайтҳо аз оғоз то хостинг.',
+    s1_l1:'Сайтҳои корпоративӣ', s1_l2:'Landing Page', s1_l3:'GitHub Pages',
+    s2_h:'Arch & 3D', s2_p:'Тасвирсозии объектҳо ва шаклҳои меъморӣ.',
+    s2_l1:'3D Моделсозӣ', s2_l2:'Рендеринги саҳна', s2_l3:'Накшаҳои муҳандисӣ',
+    s3_h:'Python & Soft', s3_p:'Автоматикунонии кор ва сохтани асбобҳо.',
+    s3_l1:'Ботҳои Telegram', s3_l2:'Парсинги маълумот', s3_l3:'Visual Basic Apps',
+    stack_tag:'АСБОБҲО', stack_h2:'Арсенали техникӣ',
+    proj_tag:'ПОРТФОЛИО', proj_h2:'Кейсҳои баргузида',
+    proj1_desc:'Лоиҳаи бузург барои СҶТ. Сохтори сайт, форми тамос, галереяи лоиҳаҳо.',
+    proj2_desc:'Маҷмӯи асбобҳо барои автоматикунонии Bug Bounty.',
+    proj3_desc:'Платформаи таълимӣ дар асоси ҲМ барои мусобиқа ва гранти Google AI.',
+    proj4_h:'Лоиҳаи махфӣ', proj4_desc:'Платформаи бузург барои бозори Тоҷикистон. Нашр дар 2026.',
+    proj4_soon:'Эълон пас аз 2 моҳ',
+    price_tag:'НАРХҲО', price_h2:'Пакетҳои хизматрасонӣ',
+    p1_h:'Landing Page', p2_h:'Corporate', p3_h:'Custom / Soft',
+    p1_f1:'Сайти якзинагӣ', p1_f2:'Мувофиқати мобилӣ', p1_f3:'Хостинги GitHub', p1_f4:'5 рӯзи коркард',
+    p2_f1:'Сайти бисёрзинагӣ', p2_f2:'Формҳо ва Интегратсияҳо', p2_f3:'Оптимизатсияи SEO', p2_f4:'2 ҳафтаи дастгирӣ',
+    p3_f1:'Скриптҳои Python / VB', p3_f2:'3D Моделсозӣ', p3_f3:'Системаҳои мураккаб', p3_f4:'Нақшаи инфиродӣ',
+    per_proj:'/ лоиҳа', per_deal:'/ шартнома',
+    btn_choose:'Интихоб', btn_discuss:'Муҳокима', btn_add:'Илова',
+    quiz_tag:'САНҶИШ', quiz_h2:'Дониши худро санҷ', quiz_sub:'10 савол дар бораи веб ва Hasan Group',
+    quiz_result:'Натиҷаи шумо', quiz_retry:'Аз нав гузаред',
+    cal_tag:'БАРНОМАРЕЗӢ', cal_h2:'Тақвим',
+    mon:'Дш', tue:'Сш', wed:'Чш', thu:'Пш', fri:'Ҷм', sat:'Шб', sun:'Яш',
+    today:'Имрӯз', event:'Рӯйдод', holiday:'Ид',
+    add_event:'Рӯйдод илова кунед', events_title:'Рӯйдодҳо',
+    evt_placeholder:'Номи рӯйдод',
+    contact_h2:'Оғоз кардан мехоҳед?', contact_sub:'Вазифаро тавсиф кунед.',
+    form_name:'Номи шумо', form_msg:'Лоиҳаро тавсиф кунед...', form_submit:'Дархост фиристед',
+    footer_desc:'Маҳсулоти рақамиро бо ҷон ва дақиқии муҳандисӣ эҷод мекунем.',
+    privacy:'Сиёсати махфият', terms:'Шартнома',
+    theme:'Мавзӯъ', themeTitle:'Мавзӯъи интерфейс',
+    countdown:'ҲИСОБШУМОРИИ БОЗГАШТ', days:'рӯз', hours:'соат', mins:'дақ', secs:'сон',
+    cookie_text:'Мо барои беҳтар кардани UX cookie истифода мебарем.',
+    welcome_sub:'Хуш омадед! Номи шумо чист?',
+    greet_morning:'Субҳ ба хайр', greet_day:'Рӯзи хуш', greet_evening:'Бегоҳи хуш', greet_night:'Шаби хуш',
+    time_world:'Вақт дар ҷаҳон',
+    tour_t1:'🌍 Забонҳо', tour_d1:'Забони сайтро тағйир диҳед — аз 5 забон интихоб кунед.',
+    tour_t2:'🎨 Мавзӯъҳо', tour_d2:'Мавзӯи интерфейсро тағйир диҳед.',
+    tour_t3:'🕐 Минтақаҳои вақт', tour_d3:'Барои кушодани соатҳо клик кунед.',
+    tour_t4:'⏳ Ҳисобшуморӣ', tour_d4:'То идди навбатӣ ҳисоб мекунад.',
+    tour_t5:'🎉 Тайёр!', tour_d5:'Ба сайти Hasan Group хуш омадед!',
+    tour_next:'Идома →',
+    greet_return:'Хуш омадед боз ба Hasan Group!', greet_welcome:'Ба Hasan Group хуш омадед!',
+  },
+  ar:{
+    nav_about:'عني', nav_services:'الخدمات', nav_projects:'المشاريع',
+    nav_pricing:'الأسعار', nav_quiz:'اختبار', nav_calendar:'التقويم',
+    nav_cta:'ابدأ مشروعاً', nav_label:'التنقل', contacts_label:'اتصل بنا',
+    hero_tag:'متاح للمشاريع',
+    hero_h1_pre:'هندسة', hero_h1_suf:' مستقبلك الرقمي',
+    hero_desc:'Hasan Group — مزيج من تقنيات الويب والنهج الهندسي وفلسفة كايزن.',
+    hero_btn1:'عرض المشاريع', hero_btn2:'اقرأ القصة',
+    stat_exp:'سنوات خبرة', stat_support:'دعم', stat_quality:'جودة', stat_cases:'حالات',
+    about_tag:'المؤسس', about_h2:'من هو خلف الكود؟',
+    about_p1:'مرحبا! أنا حسن. طالب في جامعة TGU تخصص تصميم ويب.',
+    about_p2:'فلسفتي: <strong>«الانضباط يتفوق على الموهبة»</strong>.',
+    about_p3:'أدرس الفيزياء والعمارة، وأطلق <strong>Digital Tajikistan</strong> بدعم Google AI.',
+    about_cv:'تحميل السيرة الذاتية',
+    srv_tag:'النظام البيئي للخدمات', srv_h2:'ما يمكنني تقديمه',
+    s1_h:'تطوير الويب', s1_p:'دورة كاملة لإنشاء المواقع.',
+    s1_l1:'مواقع الشركات', s1_l2:'صفحة هبوط', s1_l3:'GitHub Pages',
+    s2_h:'Arch & 3D', s2_p:'تصور المجسمات والأشكال المعمارية.',
+    s2_l1:'نمذجة 3D', s2_l2:'تصيير المشاهد', s2_l3:'رسومات هندسية',
+    s3_h:'Python & Soft', s3_p:'أتمتة المهام وإنشاء الأدوات.',
+    s3_l1:'بوتات Telegram', s3_l2:'استخراج البيانات', s3_l3:'تطبيقات Visual Basic',
+    stack_tag:'أدوات العمل', stack_h2:'الترسانة التقنية',
+    proj_tag:'معرض الأعمال', proj_h2:'أبرز المشاريع',
+    proj1_desc:'مشروع ضخم لمنظمة غير ربحية. تصميم الموقع، نموذج التواصل، معرض المشاريع.',
+    proj2_desc:'مجموعة أدوات لأتمتة Bug Bounty ومعالجة البيانات.',
+    proj3_desc:'منصة تعليمية تعتمد على الذكاء الاصطناعي للمشاركة في مسابقة ومنحة Google AI.',
+    proj4_h:'المشروع السري', proj4_desc:'منصة ضخمة لسوق طاجيكستان تجمع العمارة والذكاء الاصطناعي. إصدار 2026.',
+    proj4_soon:'الإعلان بعد شهرين',
+    price_tag:'التسعير', price_h2:'حزم الخدمات',
+    p1_h:'صفحة هبوط', p2_h:'مؤسسي', p3_h:'مخصص / برمجيات',
+    p1_f1:'موقع أحادي الصفحة', p1_f2:'متجاوب مع الجوال', p1_f3:'استضافة GitHub', p1_f4:'5 أيام تطوير',
+    p2_f1:'موقع متعدد الصفحات', p2_f2:'نماذج وتكاملات', p2_f3:'تحسين SEO', p2_f4:'أسبوعان من الدعم',
+    p3_f1:'سكريبتات Python / VB', p3_f2:'نمذجة 3D', p3_f3:'أنظمة معقدة', p3_f4:'خطة فردية',
+    per_proj:'/ مشروع', per_deal:'/ عقد',
+    btn_choose:'اختر', btn_discuss:'ناقش', btn_add:'أضف',
+    quiz_tag:'اختبار', quiz_h2:'اختبر معلوماتك', quiz_sub:'10 أسئلة عن تطوير الويب و Hasan Group',
+    quiz_result:'نتيجتك', quiz_retry:'أعد المحاولة',
+    cal_tag:'المخطط', cal_h2:'التقويم',
+    mon:'إث', tue:'ثل', wed:'أر', thu:'خم', fri:'جم', sat:'سب', sun:'أح',
+    today:'اليوم', event:'حدث', holiday:'عطلة',
+    add_event:'إضافة حدث', events_title:'الأحداث',
+    evt_placeholder:'اسم الحدث',
+    contact_h2:'مستعد للبدء؟', contact_sub:'صف مهمتك وسأقترح أفضل حل تقني.',
+    form_name:'اسمك', form_msg:'صف مشروعك...', form_submit:'إرسال الطلب',
+    footer_desc:'نبني المنتجات الرقمية بروح ودقة هندسية.',
+    privacy:'سياسة الخصوصية', terms:'شروط الخدمة',
+    theme:'المظهر', themeTitle:'مظهر الواجهة',
+    countdown:'العد التنازلي', days:'يوم', hours:'س', mins:'د', secs:'ث',
+    cookie_text:'نستخدم ملفات تعريف الارتباط لتحسين تجربة المستخدم.',
+    welcome_sub:'مرحباً! ما اسمك؟',
+    greet_morning:'صباح الخير', greet_day:'مساء الخير', greet_evening:'مساء الخير', greet_night:'تصبح على خير',
+    time_world:'الوقت حول العالم',
+    tour_t1:'🌍 اللغات', tour_d1:'غيّر لغة الموقع — اختر من بين 5 لغات.',
+    tour_t2:'🎨 المظاهر', tour_d2:'غيّر مظهر الواجهة — داكن، فاتح، سايبر وغيرها.',
+    tour_t3:'🕐 المناطق الزمنية', tour_d3:'انقر لعرض ساعات 6 مدن في العالم.',
+    tour_t4:'⏳ العد التنازلي', tour_d4:'يعد تنازلياً حتى العطلة أو الحدث القادم.',
+    tour_t5:'🎉 كل شيء جاهز!', tour_d5:'مرحباً بك في Hasan Group!',
+    tour_next:'التالي →',
+    greet_return:'أهلاً بعودتك إلى Hasan Group!', greet_welcome:'مرحباً بك في Hasan Group!',
+  },
+  zh:{
+    nav_about:'关于我', nav_services:'服务', nav_projects:'项目',
+    nav_pricing:'价格', nav_quiz:'测验', nav_calendar:'日历',
+    nav_cta:'开始项目', nav_label:'导航', contacts_label:'联系方式',
+    hero_tag:'接受项目中',
+    hero_h1_pre:'构建您的', hero_h1_suf:' 数字未来',
+    hero_desc:'Hasan Group — 融合网络技术、工程思维和改善哲学。从伊斯塔拉夫尚为全球构建网站、软件和设计系统。',
+    hero_btn1:'查看项目', hero_btn2:'阅读故事',
+    stat_exp:'年经验', stat_support:'支持', stat_quality:'质量', stat_cases:'案例',
+    about_tag:'创始人', about_h2:'代码背后是谁？',
+    about_p1:'你好！我是哈桑。塔吉克国立大学一年级学生，专业为网页设计与计算机图形学。',
+    about_p2:'我的理念：<strong>「纪律胜过天赋」</strong>。',
+    about_p3:'还在学习物理和建筑，写作《反书》，携手 Google AI 启动 <strong>Digital Tajikistan</strong>。',
+    about_cv:'下载简历',
+    srv_tag:'服务生态', srv_h2:'我能提供什么',
+    s1_h:'网站开发', s1_p:'从原型到托管的完整网站创建。',
+    s1_l1:'企业网站', s1_l2:'落地页', s1_l3:'GitHub Pages',
+    s2_h:'建筑 & 3D', s2_p:'对象和建筑形式的可视化。',
+    s2_l1:'3D建模', s2_l2:'场景渲染', s2_l3:'工程图纸',
+    s3_h:'Python & 软件', s3_p:'自动化和工具创建。',
+    s3_l1:'Telegram机器人', s3_l2:'数据解析', s3_l3:'Visual Basic应用',
+    stack_tag:'工具箱', stack_h2:'技术武器库',
+    proj_tag:'作品集', proj_h2:'精选案例',
+    proj1_desc:'大型非政府组织项目。开发网站结构、联系表单、项目画廊。',
+    proj2_desc:'用于 Bug Bounty 自动化和数据处理的自定义工具集。',
+    proj3_desc:'基于AI的教育平台，参加比赛和 Google AI 基金申请。',
+    proj4_h:'机密项目', proj4_desc:'为塔吉克斯坦市场打造的大型平台，融合建筑与AI。2026年发布。',
+    proj4_soon:'2个月后公告',
+    price_tag:'价格', price_h2:'服务套餐',
+    p1_h:'落地页', p2_h:'企业版', p3_h:'定制 / 软件',
+    p1_f1:'单页网站', p1_f2:'移动端适配', p1_f3:'GitHub托管', p1_f4:'5天开发',
+    p2_f1:'多页网站', p2_f2:'表单与集成', p2_f3:'SEO优化', p2_f4:'2周支持',
+    p3_f1:'Python / VB脚本', p3_f2:'3D建模', p3_f3:'复杂系统', p3_f4:'个性化方案',
+    per_proj:'/ 项目', per_deal:'/ 合同',
+    btn_choose:'选择', btn_discuss:'讨论', btn_add:'添加',
+    quiz_tag:'测验', quiz_h2:'测试您的知识', quiz_sub:'10道关于网络开发、IT和Hasan Group的题目',
+    quiz_result:'您的成绩', quiz_retry:'重新测验',
+    cal_tag:'计划表', cal_h2:'日历',
+    mon:'一', tue:'二', wed:'三', thu:'四', fri:'五', sat:'六', sun:'日',
+    today:'今天', event:'事件', holiday:'节假日',
+    add_event:'添加事件', events_title:'事件',
+    evt_placeholder:'事件名称',
+    contact_h2:'准备好开始了吗？', contact_sub:'描述任务，我将提供最佳技术方案。',
+    form_name:'您的姓名', form_msg:'描述您的项目...', form_submit:'发送请求',
+    footer_desc:'用心和工程精度构建数字产品。',
+    privacy:'隐私政策', terms:'服务条款',
+    theme:'主题', themeTitle:'界面主题',
+    countdown:'倒计时', days:'天', hours:'时', mins:'分', secs:'秒',
+    cookie_text:'我们使用Cookie改善用户体验。',
+    welcome_sub:'欢迎！请问您叫什么名字？',
+    greet_morning:'早上好', greet_day:'下午好', greet_evening:'晚上好', greet_night:'晚安',
+    time_world:'世界时间',
+    tour_t1:'🌍 语言', tour_d1:'更改网站语言 — 从5种语言中选择。',
+    tour_t2:'🎨 主题', tour_d2:'更改界面主题 — 深色、浅色、赛博等。',
+    tour_t3:'🕐 时区', tour_d3:'点击展开6个城市的时钟。',
+    tour_t4:'⏳ 倒计时', tour_d4:'倒计时至下一个节日或活动。',
+    tour_t5:'🎉 全部就绪！', tour_d5:'欢迎来到 Hasan Group！',
+    tour_next:'下一步 →',
+    greet_return:'欢迎回到 Hasan Group！', greet_welcome:'欢迎来到 Hasan Group！',
+  }
+};
 
-        function checkCooldown() {
-            const lastSent = localStorage.getItem('lastSentTime');
-            
-            if (lastSent) {
-                const now = Date.now();
-                const diff = now - parseInt(lastSent);
+let currentLang = localStorage.getItem('hg_lang') || 'ru';
+const FLAG_MAP = {ru:'🇷🇺',en:'🇬🇧',tg:'🇹🇯',ar:'🇸🇦',zh:'🇨🇳'};
+const LANG_NAMES = {ru:'RU',en:'EN',tg:'TJ',ar:'AR',zh:'ZH'};
 
-                // Если прошло меньше 60 секунд
-                if (diff < COOLDOWN) {
-                    const remaining = Math.ceil((COOLDOWN - diff) / 1000);
-                    startTimer(remaining);
-                }
-            }
-        }
+// FIX: renamed function from t() to tr() to avoid conflict with setTheme(t) parameter
+function tr(key){ return (LANGS[currentLang]||LANGS.ru)[key] || (LANGS.ru[key] || key); }
 
-        // 2. Когда нажимают кнопку "Отправить"
-        form.addEventListener('submit', function(e) {
-            const lastSent = localStorage.getItem('lastSentTime');
-            
-            if (lastSent) {
-                const now = Date.now();
-                if (now - parseInt(lastSent) < COOLDOWN) {
-                    e.preventDefault(); // Останавливаем отправку
-                    alert("Пожалуйста, подождите перед отправкой следующего сообщения.");
-                    return;
-                }
-            }
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.dataset.i18n;
+    const val = tr(k);
+    if(val !== undefined) el.innerHTML = val;
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const k = el.dataset.i18nPlaceholder;
+    const val = tr(k);
+    if(val) el.placeholder = val;
+  });
+  document.getElementById('currentFlag').textContent = FLAG_MAP[currentLang]||'🌐';
+  document.getElementById('currentLangName').textContent = LANG_NAMES[currentLang]||currentLang.toUpperCase();
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  const ctlEl = document.getElementById('clockToggleLabel');
+  if(ctlEl) ctlEl.textContent = tr('time_world');
+  const subEl = document.getElementById('welcomeSub');
+  if(subEl) subEl.textContent = tr('welcome_sub');
+}
 
-            // Если все ок:
-            // Запоминаем время отправки
-            localStorage.setItem('lastSentTime', Date.now());
-            
-            // Визуально показываем, что процесс пошел
-            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Отправляем...';
-            btn.style.opacity = '0.7';
-            // Форма отправится сама, так как мы не вызвали preventDefault() здесь
-        });
+function setLang(lang){
+  currentLang = lang;
+  localStorage.setItem('hg_lang', lang);
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active', o.dataset.lang===lang));
+  applyLang();
+  document.getElementById('langMenu').classList.remove('open');
+}
 
-        // 3. Функция красивого таймера на кнопке
-        function startTimer(seconds) {
-            btn.disabled = true; // Блокируем кнопку
-            btn.style.cursor = 'not-allowed';
-            btn.style.background = '#333'; // Делаем серой
-            
-            const originalText = 'Отправить'; // Текст кнопки по умолчанию
-            
-            const interval = setInterval(() => {
-                btn.innerHTML = `<i class="fas fa-clock"></i> Ждите ${seconds}с`;
-                seconds--;
+function toggleLangMenu(){
+  document.getElementById('langMenu').classList.toggle('open');
+}
 
-                if (seconds < 0) {
-                    clearInterval(interval);
-                    // Разблокируем
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                    btn.style.cursor = 'pointer';
-                    btn.style.background = ''; // Возвращаем красивый цвет
-                    btn.style.opacity = '1';
-                }
-            }, 1000);
-        }
-    });
-</script>
-<div id="cookie-banner" style="position: fixed; bottom: -300px; left: 20px; right: 20px; max-width: 400px; background: rgba(21, 22, 28, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(76, 201, 240, 0.3); padding: 25px; border-radius: 16px; z-index: 10000; color: white; box-shadow: 0 0 30px rgba(76, 201, 240, 0.15); transition: bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; gap: 15px;">
-    <div style="display: flex; align-items: start; gap: 15px;">
-        <i class="fas fa-cookie" style="font-size: 24px; color: #4cc9f0;"></i>
-        <div>
-            <h4 style="margin: 0 0 5px 0; font-family: 'Manrope', sans-serif; font-size: 16px;">Cookies & Privacy</h4>
-            <p style="margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.5;">Мы используем куки для улучшения UX и аналитики. Продолжая, вы соглашаетесь с <a href="policy.html" style="color: #4cc9f0; text-decoration: underline;">Политикой</a>.</p>
-        </div>
-    </div>
-    <div style="display: flex; gap: 10px; justify-content: flex-end;">
-        <button onclick="acceptCookies()" style="padding: 10px 25px; border-radius: 6px; border: none; background: #4cc9f0; color: #0b0c10; font-weight: 800; cursor: pointer; font-family: 'Manrope', sans-serif; transition: 0.3s;">ACCEPT</button>
-    </div>
-</div>
+// ====== HOLIDAYS ======
+const HOLIDAYS = [
+  {month:1,  day:1,  key:'newyear',      emoji:'🎆', en:'Happy New Year!', ru:'С Новым Годом!', tg:'Соли Нав муборак!', ar:'كل عام وأنتم بخير!', zh:'新年快乐！', theme:'newyear', type:'snow', days:7},
+  {month:3,  day:21, key:'nowruz',       emoji:'🌸', en:'Happy Nowruz!', ru:'Навруз муборак!', tg:'Наврӯзатон муборак!', ar:'عيد النوروز مبارك!', zh:'诺鲁孜节快乐！', theme:'nowruz', type:'flower', days:7},
+  {month:9,  day:9,  key:'independence', emoji:'🇹🇯', en:'Happy Independence Day!', ru:'С Днём Независимости Таджикистана!', tg:'Истиқлолияти Тоҷикистон муборак!', ar:'عيد الاستقلال الطاجيكي مبارك!', zh:'塔吉克斯坦独立日快乐！', theme:'independence', type:'flower', days:1},
+  {month:11, day:6,  key:'constitution', emoji:'📜', en:'Constitution Day!', ru:'День Конституции Таджикистана!', tg:'Рӯзи Конститутсия муборак!', ar:'يوم الدستور مبارك!', zh:'宪法日快乐！', theme:'independence', type:'flower', days:1},
+];
 
-<script>
-    window.addEventListener('load', () => {
-        if (!localStorage.getItem('cookiesAccepted')) {
-            setTimeout(() => { document.getElementById('cookie-banner').style.bottom = '30px'; }, 2000);
-        }
-    });
-    function acceptCookies() {
-        document.getElementById('cookie-banner').style.bottom = '-300px';
-        localStorage.setItem('cookiesAccepted', 'true');
+// FIX: Countdown targets with full locale data
+const COUNTDOWN_TARGETS = [
+  {month:3, day:21, ru:'Навруз', en:'Nowruz', tg:'Наврӯз', ar:'نوروز', zh:'诺鲁孜'},
+  {month:9, day:9,  ru:'День Независимости', en:'Independence Day', tg:'Истиқлолият', ar:'يوم الاستقلال', zh:'独立日'},
+  {month:1, day:1,  ru:'Новый год', en:'New Year', tg:'Соли Нав', ar:'السنة الجديدة', zh:'新年'},
+];
+
+function checkHoliday(){
+  const now = new Date();
+  const m = now.getMonth()+1, d = now.getDate();
+  const banner = document.getElementById('holidayBanner');
+  const snowWrap = document.getElementById('snowWrap');
+  for(const h of HOLIDAYS){
+    const diff = (new Date(now.getFullYear(), h.month-1, h.day) - new Date(now.getFullYear(), m-1, d)) / 86400000;
+    if(diff <= h.days && diff >= 0){
+      banner.style.display = 'flex';
+      banner.style.background = h.type==='snow'
+        ? 'linear-gradient(135deg,rgba(96,165,250,.15),rgba(192,132,252,.15))'
+        : 'linear-gradient(135deg,rgba(74,222,128,.15),rgba(250,204,21,.15))';
+      banner.style.borderBottom = '1px solid rgba(76,201,240,.2)';
+      document.getElementById('hbEmoji').textContent = h.emoji;
+      document.getElementById('hbText').textContent = h[currentLang] || h.ru;
+      banner.classList.add('show');
+      document.body.classList.add('holiday-'+h.theme);
+      const count = h.type==='snow' ? 30 : 20;
+      for(let i=0;i<count;i++){
+        const el = document.createElement('div');
+        el.className = h.type==='snow' ? 'snowflake' : 'flower';
+        el.textContent = h.type==='snow' ? ['❄️','❅','❆','✦'][Math.floor(Math.random()*4)] : ['🌸','🌺','🌼','🌻'][Math.floor(Math.random()*4)];
+        el.style.left = (Math.random()*100)+'%';
+        el.style.animationDuration = (8+Math.random()*10)+'s';
+        el.style.animationDelay = (Math.random()*10)+'s';
+        el.style.fontSize = (12+Math.random()*16)+'px';
+        snowWrap.appendChild(el);
+      }
+      setTimeout(markCalHolidays, 500);
+      break;
     }
+  }
+}
+
+// FIX: Countdown now uses a single persistent interval, cleared if called again
+let _countdownInterval = null;
+function updateCountdown(){
+  if(_countdownInterval) clearInterval(_countdownInterval);
+  const now = new Date();
+  let nearest = null, nearestMs = Infinity;
+  for(const tgt of COUNTDOWN_TARGETS){
+    let target = new Date(now.getFullYear(), tgt.month-1, tgt.day);
+    if(target <= now) target = new Date(now.getFullYear()+1, tgt.month-1, tgt.day);
+    const diff = target - now;
+    if(diff < nearestMs){ nearestMs = diff; nearest = {tgt, target}; }
+  }
+  if(!nearest) return;
+  document.getElementById('cdTitle').textContent = nearest.tgt[currentLang] || nearest.tgt.ru;
+  _countdownInterval = setInterval(()=>{
+    const d = nearest.target - new Date();
+    if(d <= 0){ clearInterval(_countdownInterval); return; }
+    document.getElementById('cdD').textContent = String(Math.floor(d/86400000)).padStart(2,'0');
+    document.getElementById('cdH').textContent = String(Math.floor((d%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('cdM').textContent = String(Math.floor((d%3600000)/60000)).padStart(2,'0');
+    document.getElementById('cdS').textContent = String(Math.floor((d%60000)/1000)).padStart(2,'0');
+  }, 1000);
+}
+
+function markCalHolidays(){
+  const days = document.querySelectorAll('.cal-day:not(.other-month)');
+  days.forEach(btn=>{
+    const d = parseInt(btn.textContent);
+    if(isNaN(d)) return;
+    for(const h of HOLIDAYS){
+      if(h.month===calMonth+1 && h.day===d){
+        btn.classList.add('is-holiday');
+        btn.title = h[currentLang]||h.ru;
+      }
+    }
+  });
+}
+
+// ====== AOS ======
+AOS.init({once:true,duration:850,easing:'ease-out-cubic'});
+
+// ====== DATE ======
+const _now = new Date();
+document.getElementById('current-date').textContent = _now.toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'});
+// FIX: Year in footer set dynamically (was hardcoded 2025)
+document.getElementById('footYear').textContent = _now.getFullYear();
+
+// ====== TYPEWRITER ======
+const twWords=['Цифрового','Успешного','Будущего','Уникального'];
+let twWi=0,twCi=0,twDel=false;
+const twEl=document.getElementById('tw');
+function twTick(){
+  const w=twWords[twWi];
+  twDel ? twEl.textContent=w.slice(0,--twCi) : twEl.textContent=w.slice(0,++twCi);
+  if(!twDel && twCi===w.length){ twDel=true; setTimeout(twTick,1800); return; }
+  if(twDel && twCi===0){ twDel=false; twWi=(twWi+1)%twWords.length; }
+  setTimeout(twTick, twDel?55:105);
+}
+twTick();
+
+// ====== CLOCKS ======
+const tzs=['Asia/Dushanbe','Europe/Moscow','Asia/Dubai','America/New_York','Europe/London','Asia/Tokyo'];
+function tickClocks(){
+  const d=new Date();
+  tzs.forEach((tz,i)=>{
+    const el=document.getElementById('c'+i);
+    if(el) el.textContent=d.toLocaleTimeString('ru-RU',{timeZone:tz,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  });
+}
+tickClocks(); setInterval(tickClocks,1000);
+
+function toggleClocks(){
+  const body = document.getElementById('clocksBody');
+  const chevron = document.getElementById('clockChevron');
+  body.classList.toggle('open');
+  chevron.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+// ====== SCROLL TOP ======
+const stb=document.getElementById('scrollTopBtn');
+window.addEventListener('scroll',()=>stb.classList.toggle('show',scrollY>400));
+
+// ====== CURSOR — only on pointer:fine devices ======
+const isPointerFine = window.matchMedia('(pointer:fine)').matches;
+if(isPointerFine){
+  const cursorMain = document.getElementById('cursorMain');
+  const cursorTrail = document.getElementById('cursorTrail');
+  let mx=0,my=0,tx=0,ty=0;
+  const trailDots = [];
+  const TRAIL_COUNT = 8;
+
+  for(let i=0;i<TRAIL_COUNT;i++){
+    const dot = document.createElement('div');
+    dot.className = 'trail-dot';
+    dot.style.cssText = `width:${4+i*1.5}px;height:${4+i*1.5}px;opacity:${0.5-i*0.05};`;
+    document.body.appendChild(dot);
+    trailDots.push({el:dot, x:0, y:0});
+  }
+
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cursorMain.style.left=mx+'px';
+    cursorMain.style.top=my+'px';
+  });
+  document.addEventListener('mousedown',()=>{
+    cursorMain.style.transform='translate(-50%,-50%) scale(.7)';
+    cursorTrail.classList.add('click');
+  });
+  document.addEventListener('mouseup',()=>{
+    cursorMain.style.transform='translate(-50%,-50%) scale(1)';
+    cursorTrail.classList.remove('click');
+  });
+
+  (function animCursor(){
+    tx+=(mx-tx)*.18; ty+=(my-ty)*.18;
+    cursorTrail.style.left=tx+'px'; cursorTrail.style.top=ty+'px';
+    let px=mx,py=my;
+    trailDots.forEach((dot,i)=>{
+      dot.x+=(px-dot.x)*(0.3-i*0.02);
+      dot.y+=(py-dot.y)*(0.3-i*0.02);
+      dot.el.style.left=dot.x+'px';
+      dot.el.style.top=dot.y+'px';
+      dot.el.style.display='block';
+      px=dot.x; py=dot.y;
+    });
+    requestAnimationFrame(animCursor);
+  })();
+
+  document.querySelectorAll('a,button,.btn,.srv-card,.price-card,.stack-item,.cal-day').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cursorTrail.classList.add('hover'); cursorMain.style.width='4px'; cursorMain.style.height='4px'; });
+    el.addEventListener('mouseleave',()=>{ cursorTrail.classList.remove('hover'); cursorMain.style.width='12px'; cursorMain.style.height='12px'; });
+  });
+}
+
+// ====== RIPPLE effect ======
+document.querySelectorAll('.btn,.quiz-opt').forEach(btn=>{
+  btn.addEventListener('click',function(e){
+    const r=document.createElement('span');
+    r.className='ripple-effect';
+    const rect=this.getBoundingClientRect();
+    const size=Math.max(rect.width,rect.height)*2;
+    r.style.width=r.style.height=size+'px';
+    r.style.left=(e.clientX-rect.left-size/2)+'px';
+    r.style.top=(e.clientY-rect.top-size/2)+'px';
+    this.style.position='relative';
+    this.style.overflow='hidden';
+    this.appendChild(r);
+    setTimeout(()=>r.remove(),700);
+  });
+});
+
+// ====== PARTICLES ======
+const cv=document.getElementById('particles-canvas'),ctx=cv.getContext('2d');
+let W,H,pts=[];
+function rsz(){W=cv.width=innerWidth;H=cv.height=innerHeight;}rsz();window.addEventListener('resize',rsz);
+class P{constructor(){this.r();}r(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.a=Math.random()*.35+.1;this.sz=Math.random()*1.3+.4;}u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.r();}d(){ctx.beginPath();ctx.arc(this.x,this.y,this.sz,0,Math.PI*2);ctx.fillStyle=`rgba(76,201,240,${this.a})`;ctx.fill();}}
+for(let i=0;i<80;i++)pts.push(new P());
+(function ap(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.u();p.d();});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(76,201,240,${.04*(1-d/90)})`;ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(ap);})();
+
+// ====== THEME ======
+let fsz=parseInt(localStorage.getItem('hg_fs')||'16');
+document.documentElement.style.setProperty('--font-size-base',fsz+'px');
+document.getElementById('fontSizeLabel').textContent=fsz+'px';
+
+// FIX: renamed parameter from 't' to 'thm' to avoid shadowing tr() helper
+function setTheme(thm){
+  document.body.className=document.body.className.replace(/theme-\w+/g,'').trim();
+  if(thm!=='dark') document.body.classList.add('theme-'+thm);
+  localStorage.setItem('hg_theme',thm);
+  document.querySelectorAll('.topt').forEach(o=>o.classList.toggle('active',o.dataset.t===thm));
+}
+const _savedTheme=localStorage.getItem('hg_theme'); if(_savedTheme) setTheme(_savedTheme);
+function toggleTheme(){ document.getElementById('themePop').classList.toggle('open'); }
+document.addEventListener('click',e=>{
+  if(!e.target.closest('#themePop')&&!e.target.closest('#controlsPanel')) document.getElementById('themePop').classList.remove('open');
+  if(!e.target.closest('#langMenu')&&!e.target.closest('#langBtn')) document.getElementById('langMenu').classList.remove('open');
+});
+function changeFontSize(d){fsz=Math.min(22,Math.max(12,fsz+d));document.documentElement.style.setProperty('--font-size-base',fsz+'px');document.getElementById('fontSizeLabel').textContent=fsz+'px';localStorage.setItem('hg_fs',fsz);}
+function resetFontSize(){fsz=16;document.documentElement.style.setProperty('--font-size-base','16px');document.getElementById('fontSizeLabel').textContent='16px';localStorage.setItem('hg_fs',16);}
+
+// ====== TOUR — now fully translated ======
+const tourSteps = [
+  {tKey:'tour_t1', dKey:'tour_d1', sel:'#langBtn'},
+  {tKey:'tour_t2', dKey:'tour_d2', sel:'#controlsPanel'},
+  {tKey:'tour_t3', dKey:'tour_d3', sel:'#clocksToggle'},
+  {tKey:'tour_t4', dKey:'tour_d4', sel:'#countdownWidget'},
+  {tKey:'tour_t5', dKey:'tour_d5', sel:null},
+];
+let tourIdx=0, _tourName='';
+
+function startTour(name){
+  _tourName = name;
+  tourIdx = 0;
+  showTourStep();
+}
+function showTourStep(){
+  const step = tourSteps[tourIdx];
+  const tt = document.getElementById('tourTooltip');
+  document.getElementById('tourStep').textContent = `${tourIdx+1}/${tourSteps.length}`;
+  document.getElementById('tourTitle').textContent = tr(step.tKey);
+  document.getElementById('tourDesc').textContent = tr(step.dKey);
+  document.getElementById('tourTooltip').querySelector('.tour-next-btn').textContent = tr('tour_next');
+  tt.classList.add('visible');
+  tt.style.transform = '';
+  if(step.sel){
+    const target = document.querySelector(step.sel);
+    if(target){
+      const rect = target.getBoundingClientRect();
+      tt.style.top = (rect.bottom + 16 + scrollY)+'px';
+      tt.style.left = Math.max(10, Math.min(rect.left, window.innerWidth-320))+'px';
+    }
+  } else {
+    tt.style.top = '50%'; tt.style.left = '50%';
+    tt.style.transform = 'translate(-50%,-50%)';
+  }
+}
+function nextTour(){
+  tourIdx++;
+  if(tourIdx >= tourSteps.length){ closeTour(); return; }
+  showTourStep();
+}
+function closeTour(){
+  document.getElementById('tourTooltip').classList.remove('visible');
+  document.getElementById('tourTooltip').style.transform = '';
+}
+
+function getGreeting(){
+  const h = new Date().getHours();
+  if(h>=5&&h<12) return tr('greet_morning');
+  if(h>=12&&h<17) return tr('greet_day');
+  if(h>=17&&h<21) return tr('greet_evening');
+  return tr('greet_night');
+}
+
+function startExperience(){
+  const name = document.getElementById('nameInput').value.trim();
+  if(!name){ document.getElementById('nameInput').focus(); return; }
+  localStorage.setItem('hg_username', name);
+  const loader = document.getElementById('welcomeLoader');
+  const btn = document.getElementById('welcomeBtn');
+  loader.style.display='block';
+  btn.style.display='none';
+  setTimeout(()=>{
+    document.getElementById('welcomeScreen').classList.add('out');
+    setTimeout(()=>{
+      document.getElementById('welcomeScreen').style.display='none';
+      const greetBar = document.getElementById('greetBar');
+      document.getElementById('greetName').textContent = `${getGreeting()}, ${name}!`;
+      document.getElementById('greetMsg').textContent = tr('greet_welcome');
+      greetBar.classList.add('show');
+      setTimeout(()=>startTour(name), 800);
+    },800);
+  },1500);
+}
+
+document.getElementById('nameInput').addEventListener('keydown', e=>{ if(e.key==='Enter') startExperience(); });
+
+window.addEventListener('load',()=>{
+  // FIX: if already visited, skip welcome screen and do NOT run tour again
+  const saved = localStorage.getItem('hg_username');
+  if(saved){
+    document.getElementById('welcomeScreen').style.display='none';
+    const greetBar = document.getElementById('greetBar');
+    greetBar.classList.add('show');
+    document.getElementById('greetName').textContent = `${getGreeting()}, ${saved}!`;
+    document.getElementById('greetMsg').textContent = tr('greet_return');
+    setTimeout(()=>greetBar.classList.remove('show'), 5000);
+  }
+  // Cookie banner
+  if(!localStorage.getItem('cookiesAccepted')) setTimeout(()=>document.getElementById('cookie-banner').style.bottom='30px',2000);
+  // Apply saved language
+  const savedLang = localStorage.getItem('hg_lang');
+  if(savedLang) currentLang = savedLang;
+  applyLang();
+  document.querySelectorAll('.lang-opt').forEach(o=>o.classList.toggle('active',o.dataset.lang===currentLang));
+  // Check holidays + start countdown
+  checkHoliday();
+  updateCountdown();
+});
+
+// ====== QUIZ ======
+const quiz=[
+  {cat:'WEB',q:'Что такое HTML?',opts:['Язык программирования','Язык разметки гипертекста','База данных','Операционная система'],a:1,hint:'HTML — HyperText Markup Language. Описывает структуру страницы.'},
+  {cat:'HASAN GROUP',q:'Какой инструмент использует Хасан для 3D-моделирования?',opts:['AutoCAD','Cinema 4D','Blender','SketchUp'],a:2,hint:'Blender 3D — бесплатный инструмент для моделирования и рендеринга.'},
+  {cat:'CSS',q:'Что означает аббревиатура CSS?',opts:['Computer Style System','Cascading Style Sheets','Creative Style Script','Coded Style Syntax'],a:1,hint:'CSS — Cascading Style Sheets. Отвечает за внешний вид страниц.'},
+  {cat:'PYTHON',q:'Для чего используется Python в Hasan Group?',opts:['Только для сайтов','Автоматизация и боты','Только для игр','Работа с графикой'],a:1,hint:'Python идеален для автоматизации, Telegram-ботов, парсинга данных.'},
+  {cat:'GITHUB',q:'Что такое GitHub Pages?',opts:['Платный VPS хостинг','Бесплатный хостинг статических сайтов','Социальная сеть','IDE для кода'],a:1,hint:'GitHub Pages позволяет бесплатно публиковать статические сайты.'},
+  {cat:'HASAN GROUP',q:'Что изучает Хасан помимо веб-разработки?',opts:['Биологию и химию','Физику и архитектуру','Историю и право','Музыку'],a:1,hint:'Физика и архитектура помогают в 3D-визуализации и инженерном мышлении.'},
+  {cat:'SEO',q:'Что такое SEO?',opts:['Язык программирования','Поисковая оптимизация','Тип базы данных','Протокол сети'],a:1,hint:'SEO — Search Engine Optimization. Улучшение видимости в поисковиках.'},
+  {cat:'JS',q:'Что делает функция console.log() в JavaScript?',opts:['Сохраняет файл','Выводит данные в консоль','Создаёт базу данных','Запускает сервер'],a:1,hint:'console.log() — инструмент отладки, выводит значения в консоль.'},
+  {cat:'PYTHON',q:'Что такое Telegram Bot?',opts:['Вирус','Автоматизированный аккаунт через API','Браузерное расширение','Мобильное приложение'],a:1,hint:'Telegram-боты работают через официальный Bot API.'},
+  {cat:'STARTUP',q:'Что такое Digital Tajikistan?',opts:['Блог','Образовательная ИИ-платформа','Госпрограмма','Игровой проект'],a:1,hint:'Digital Tajikistan — образовательная платформа с поддержкой Google AI.'},
+];
+let qI=0,score=0,answered=false,correctArr=[];
+function loadQ(){
+  const q=quiz[qI];
+  document.getElementById('quizProg').style.width=(qI/quiz.length*100)+'%';
+  document.getElementById('quizProgText').textContent=`Вопрос ${qI+1} из ${quiz.length}`;
+  document.getElementById('quizScoreTrack').textContent=`✓ ${score} · ✗ ${qI-score}`;
+  document.getElementById('quizCat').textContent=`— ${q.cat} —`;
+  document.getElementById('quizQ').textContent=q.q;
+  const fb=document.getElementById('quizFB');
+  fb.textContent='';fb.classList.remove('show');
+  document.getElementById('quizNext').style.display='none';
+  answered=false;
+  const badge=document.getElementById('quizBadge');
+  badge.innerHTML='';
+  correctArr.forEach(c=>{const d=document.createElement('div');d.className='quiz-s-dot '+(c?'ok':'fail');badge.appendChild(d);});
+  const opts=document.getElementById('quizOpts');
+  opts.innerHTML='';
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='quiz-opt';b.textContent=o;
+    b.onclick=()=>pick(i,b);opts.appendChild(b);
+  });
+}
+function pick(i,btn){
+  if(answered)return;answered=true;
+  const q=quiz[qI];
+  document.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
+  const ok=i===q.a;
+  if(ok){btn.classList.add('correct');score++;correctArr.push(true);}
+  else{btn.classList.add('wrong');document.querySelectorAll('.quiz-opt')[q.a].classList.add('correct');correctArr.push(false);}
+  const fb=document.getElementById('quizFB');
+  fb.style.borderLeftColor=ok?'#4ade80':'#f87171';
+  fb.style.color=ok?'#4ade80':'#f87171';
+  fb.textContent=(ok?'✓ Верно! ':'✗ Неверно. ')+q.hint;
+  fb.classList.add('show');
+  document.getElementById('quizNext').style.display='inline-flex';
+}
+function nextQ(){qI++;if(qI<quiz.length)loadQ();else showResult();}
+function showResult(){
+  document.getElementById('quizBody').style.display='none';
+  const r=document.getElementById('quizResult');r.style.display='block';
+  document.getElementById('scoreBig').textContent=score;
+  const circ=document.getElementById('scoreCircle');
+  setTimeout(()=>circ.style.strokeDashoffset=408.41*(1-score/quiz.length),100);
+  const msgs=['Не сдавайся 💪','Неплохо! 📚','Хороший результат! 👍','Отлично! 🌟','Мастер! Hasan одобряет! 🚀'];
+  document.getElementById('scoreMsg').textContent=msgs[Math.min(4,Math.floor(score/2.1))];
+  const cats={};quiz.forEach((q,i)=>{if(!cats[q.cat])cats[q.cat]={ok:0,tot:0};cats[q.cat].tot++;if(correctArr[i])cats[q.cat].ok++;});
+  const cb=document.getElementById('catBreakdown');cb.innerHTML='';
+  Object.entries(cats).forEach(([c,v])=>{const d=document.createElement('div');d.className='quiz-cat';d.innerHTML=`<strong>${c}</strong>${v.ok}/${v.tot} правильно`;cb.appendChild(d);});
+}
+function restartQuiz(){qI=0;score=0;correctArr=[];document.getElementById('quizBody').style.display='block';document.getElementById('quizResult').style.display='none';document.getElementById('scoreCircle').style.strokeDashoffset=408.41;loadQ();}
+loadQ();
+
+// ====== CALENDAR ======
+let calYear=_now.getFullYear(), calMonth=_now.getMonth();
+let selectedDate=null;
+let events=JSON.parse(localStorage.getItem('hg_events')||'{}');
+const MONTHS_RU=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+
+function renderCal(){
+  document.getElementById('calTitle').textContent=MONTHS_RU[calMonth]+' '+calYear;
+  document.getElementById('evtMonthLabel').textContent='— '+MONTHS_RU[calMonth];
+  const first=new Date(calYear,calMonth,1);
+  let startDow=first.getDay();startDow=(startDow+6)%7;
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  const daysInPrev=new Date(calYear,calMonth,0).getDate();
+  const container=document.getElementById('calDays');
+  container.innerHTML='';
+  const todayStr=new Date().toISOString().slice(0,10);
+  for(let i=startDow-1;i>=0;i--){const btn=document.createElement('button');btn.className='cal-day other-month';btn.textContent=daysInPrev-i;container.appendChild(btn);}
+  for(let d=1;d<=daysInMonth;d++){
+    const btn=document.createElement('button');btn.className='cal-day';btn.textContent=d;
+    const dateStr=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    if(dateStr===todayStr)btn.classList.add('today');
+    if(selectedDate===dateStr)btn.classList.add('selected');
+    if(events[dateStr]&&events[dateStr].length>0)btn.classList.add('has-event');
+    for(const h of HOLIDAYS){
+      if(h.month===calMonth+1&&h.day===d){btn.classList.add('is-holiday');btn.title=h[currentLang]||h.ru;}
+    }
+    btn.onclick=()=>{selectedDate=dateStr;document.getElementById('evtDate').value=dateStr;renderCal();renderEvtList();};
+    container.appendChild(btn);
+  }
+  const total=startDow+daysInMonth;const nextDays=(7-total%7)%7;
+  for(let d=1;d<=nextDays;d++){const btn=document.createElement('button');btn.className='cal-day other-month';btn.textContent=d;container.appendChild(btn);}
+  renderEvtList();
+}
+function calNav(dir){calMonth+=dir;if(calMonth<0){calMonth=11;calYear--;}if(calMonth>11){calMonth=0;calYear++;}renderCal();}
+function addEvent(){
+  const title=document.getElementById('evtTitle').value.trim();
+  const date=document.getElementById('evtDate').value;
+  const color=document.getElementById('evtColor').value;
+  if(!title||!date)return;
+  if(!events[date])events[date]=[];
+  events[date].push({title,color,id:Date.now()});
+  localStorage.setItem('hg_events',JSON.stringify(events));
+  document.getElementById('evtTitle').value='';
+  renderCal();
+}
+function deleteEvent(date,id){events[date]=events[date].filter(e=>e.id!==id);if(!events[date].length)delete events[date];localStorage.setItem('hg_events',JSON.stringify(events));renderCal();}
+function renderEvtList(){
+  const list=document.getElementById('evtList');list.innerHTML='';
+  const prefix=`${calYear}-${String(calMonth+1).padStart(2,'0')}`;
+  const monthEvts=Object.entries(events).filter(([k])=>k.startsWith(prefix)).sort(([a],[b])=>a>b?1:-1);
+  const holidayEvts=HOLIDAYS.filter(h=>h.month===calMonth+1).map(h=>({
+    isHoliday:true,dateStr:`${calYear}-${String(h.month).padStart(2,'0')}-${String(h.day).padStart(2,'0')}`,
+    emoji:h.emoji,name:h[currentLang]||h.ru
+  }));
+  holidayEvts.forEach(h=>{
+    const d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid rgba(250,204,21,.2);border-radius:10px;padding:10px 14px;';
+    d.innerHTML=`<span style="font-size:18px;">${h.emoji}</span><div style="flex:1;"><div style="font-size:14px;font-weight:700;color:var(--primary);">${h.name}</div><div style="font-size:11px;color:var(--text-gray);">${h.dateStr.slice(8)}.${h.dateStr.slice(5,7)}.${h.dateStr.slice(0,4)}</div></div>`;
+    list.appendChild(d);
+  });
+  if(!monthEvts.length&&!holidayEvts.length){
+    list.innerHTML+='<div style="color:var(--text-gray);font-size:14px;padding:12px 0;">Событий нет. Добавьте первое!</div>';
+    return;
+  }
+  monthEvts.forEach(([date,evts])=>{evts.forEach(ev=>{
+    const d=document.createElement('div');
+    d.style.cssText='display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:10px 14px;';
+    d.innerHTML=`<div style="width:10px;height:10px;border-radius:50%;background:${ev.color};flex-shrink:0;"></div><div style="flex:1;"><div style="font-size:14px;font-weight:700;color:var(--text);">${ev.title}</div><div style="font-size:11px;color:var(--text-gray);">${date.slice(8)}.${date.slice(5,7)}.${date.slice(0,4)}</div></div><button onclick="deleteEvent('${date}',${ev.id})" style="background:none;border:none;color:var(--text-gray);cursor:pointer;font-size:14px;padding:2px 6px;border-radius:4px;" onmouseover="this.style.color='#f87171'" onmouseout="this.style.color='var(--text-gray)'"><i class="fas fa-times"></i></button>`;
+    list.appendChild(d);
+  });});
+}
+document.getElementById('evtDate').value=_now.toISOString().slice(0,10);
+renderCal();
+function checkCalGrid(){const g=document.getElementById('calGrid');if(g)g.style.gridTemplateColumns=window.innerWidth<900?'1fr':'420px 1fr';}
+checkCalGrid();window.addEventListener('resize',checkCalGrid);
+
+// ====== MOBILE MENU ======
+const tog=document.querySelector('.menu-toggle'),navMenu=document.querySelector('.nav-menu');
+tog.addEventListener('click',()=>{
+  navMenu.classList.toggle('active');
+  tog.querySelector('i').classList.toggle('fa-times');
+  tog.querySelector('i').classList.toggle('fa-bars');
+});
+document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{
+  navMenu.classList.remove('active');
+  const icon = tog.querySelector('i');
+  if(icon.classList.contains('fa-times')){ icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+}));
+
+// ====== SECURITY: FORM ======
+const contactForm=document.getElementById('contactForm');
+// FIX: safe null-check before accessing fBtn
+const fBtn = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
+if(contactForm && fBtn){
+  const COOL=60000;
+  const ls=localStorage.getItem('lastSentTime');
+  if(ls){const d=Date.now()-parseInt(ls);if(d<COOL)startTimer(Math.ceil((COOL-d)/1000));}
+  contactForm.addEventListener('submit',e=>{
+    if(document.getElementById('honeypot').value!==''){e.preventDefault();return;}
+    const ts=parseInt(document.getElementById('formTimestamp').value);
+    if(Date.now()-ts<3000){e.preventDefault();return;}
+    const ls2=localStorage.getItem('lastSentTime');
+    if(ls2&&Date.now()-parseInt(ls2)<COOL){e.preventDefault();alert('Пожалуйста, подождите перед следующей отправкой.');return;}
+    localStorage.setItem('lastSentTime',Date.now());
+    fBtn.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Отправляем...';fBtn.style.opacity='.7';
+    startTimer(60);
+  });
+  function startTimer(s){
+    fBtn.disabled=true;fBtn.style.cursor='not-allowed';fBtn.style.background='#333';
+    const iv=setInterval(()=>{
+      fBtn.innerHTML=`<i class="fas fa-clock"></i> Ждите ${s}с`;
+      if(--s<0){clearInterval(iv);fBtn.disabled=false;fBtn.innerHTML='Отправить заявку';fBtn.style.cursor='pointer';fBtn.style.background='';fBtn.style.opacity='1';}
+    },1000);
+  }
+}
+
+// ====== COOKIE ======
+function acceptCookies(){document.getElementById('cookie-banner').style.bottom='-300px';localStorage.setItem('cookiesAccepted','true');}
+
+// ====== PAGE VISIBILITY: refresh timestamp ======
+document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState==='visible'){
+    const ts=document.getElementById('formTimestamp');
+    if(ts) ts.value=Date.now();
+  }
+});
+
+// Disable right-click on images
+document.querySelectorAll('img').forEach(img=>img.addEventListener('contextmenu',e=>e.preventDefault()));
 </script>
 </body>
 </html>
