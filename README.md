@@ -46,7 +46,7 @@
 ├── policy.html      # Политика конфиденциальности
 ├── terms.html       # Условия использования
 ├── 404.html         # Custom Error Page
-├── me.jpg           # Assets
+├── me.png           # Assets
 └── README.md        # Документация
 
 ## © Лицензия и Права (License)
